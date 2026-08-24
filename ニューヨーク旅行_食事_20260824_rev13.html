@@ -1,0 +1,3882 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ニューヨーク 食事・カフェ候補一覧 図解</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Shippori+Mincho:wght@500;700&family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-page: #f4ede2;
+    --bg-main: #f4ede2;
+    --bg-card: #fffdfa;
+    --text-main: #241c16;
+    --text-muted: #7a6a5c;
+    --text-faint: #b7a996;
+    --border-color: #e6dcc9;
+    --primary: #a6432b;
+    --primary-dark: #7c3320;
+    --gold: #b8894a;
+    --rank-s-bg: #a6432b;
+    --rank-s-text: #fdf6ee;
+    --rank-a-bg: #f1e2cc;
+    --rank-a-text: #8a5a26;
+    --rank-b-bg: #ece4d6;
+    --rank-b-text: #6b5f57;
+    --crowd-good: #5c7a4f;
+    --crowd-warn: #b8894a;
+    --crowd-bad: #a6432b;
+    --font-display: 'Fraunces', 'Shippori Mincho', serif;
+    --font-body: 'Inter', 'Noto Sans JP', sans-serif;
+    --shadow-sm: 0 1px 3px rgba(58, 39, 23, 0.08);
+    --shadow-md: 0 10px 28px -10px rgba(58, 39, 23, 0.18);
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: var(--font-body);
+    background-color: var(--bg-page);
+    color: var(--text-main);
+    line-height: 1.35;
+    font-size: 1rem;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+  }
+
+  .layout {
+    display: flex;
+    flex-direction: column;
+    max-width: 1160px;
+    margin: 0 auto;
+    padding: 1.25rem 1rem 1.75rem;
+    gap: 1rem;
+    align-items: stretch;
+  }
+
+  /* 目次 (上部・マガジン目次スタイル) */
+  .sidebar {
+    width: 100%;
+    background: var(--bg-card);
+    padding: 1rem 1.25rem;
+    border-radius: 2px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .sidebar-title {
+    font-family: var(--font-body);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+
+  .toc-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 0 1.5rem;
+  }
+
+  .toc-item {
+    margin-bottom: 0;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .toc-link {
+    display: flex;
+    align-items: baseline;
+    gap: 0.85rem;
+    text-decoration: none;
+    color: var(--text-main);
+    font-size: 0.92rem;
+    padding: 0.25rem 0.15rem;
+    background-color: transparent;
+    border-radius: 0;
+    transition: color 0.2s ease, padding-left 0.2s ease;
+  }
+
+  .toc-num {
+    font-family: var(--font-display);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-faint);
+    flex-shrink: 0;
+    transition: color 0.2s ease;
+  }
+
+  .toc-text {
+    flex: 1;
+  }
+
+  .toc-link:hover {
+    color: var(--primary);
+    padding-left: 0.5rem;
+  }
+
+  .toc-link:hover .toc-num {
+    color: var(--primary);
+  }
+
+  .toc-link.active {
+    background-color: transparent;
+    color: var(--primary);
+    font-weight: 600;
+  }
+
+  .toc-link.active .toc-num {
+    color: var(--primary);
+  }
+
+  /* メインコンテンツ */
+  .main-content {
+    flex-grow: 1;
+    min-width: 0;
+  }
+
+  .page-top-info {
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color);
+    text-align: center;
+  }
+
+  .page-kicker {
+    display: inline-block;
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.38em;
+    text-transform: uppercase;
+    color: var(--primary);
+    margin-bottom: 0.35rem;
+  }
+
+  .page-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.1rem, 4.5vw, 3.1rem);
+    font-weight: 600;
+    line-height: 1.1;
+    margin-bottom: 0.3rem;
+    color: var(--text-main);
+  }
+
+  .page-date {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 1.05rem;
+    color: var(--text-muted);
+  }
+
+  /* 凡例パネル */
+  .legend-panel {
+    background: var(--bg-card);
+    padding: 0.85rem 1rem;
+    border-radius: 2px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 0.3rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.85rem;
+  }
+
+  .legend-group h3 {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    margin-bottom: 0.4rem;
+    color: var(--text-muted);
+  }
+
+  .legend-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    font-size: 0.92rem;
+    color: var(--text-main);
+  }
+
+  /* セクション */
+  .section-block {
+    margin-bottom: 1.5rem;
+    scroll-margin-top: 1rem;
+  }
+
+  .section-title {
+    display: inline-block;
+    font-family: var(--font-display);
+    font-size: 1.7rem;
+    font-weight: 600;
+    margin-bottom: 0.65rem;
+    padding-bottom: 0.3rem;
+    border-bottom: 2px solid var(--primary);
+  }
+
+  .section-note {
+    background: #f6ead7;
+    border-left: 3px solid var(--gold);
+    padding: 0.5rem 0.75rem;
+    border-radius: 0 2px 2px 0;
+    margin-bottom: 0.75rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-main);
+  }
+
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 0.75rem;
+  }
+
+  /* 店舗カード */
+  .card {
+    background: var(--bg-card);
+    border-radius: 2px;
+    padding: 0.85rem;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .card-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .card-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.15rem;
+    margin-left: auto;
+    flex-shrink: 0;
+  }
+
+  .fav-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    border: 1px solid var(--border-color);
+    background: var(--bg-card);
+    color: var(--text-faint);
+    font-size: 0.85rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+
+  .fav-btn:hover {
+    border-color: var(--text-muted);
+    color: var(--text-muted);
+  }
+
+  .fav-btn.fav-want.is-active {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: #fdf6ee;
+  }
+
+  .fav-btn.fav-done.is-active {
+    background: var(--crowd-good);
+    border-color: var(--crowd-good);
+    color: #fdf6ee;
+  }
+
+  .rank-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.95rem;
+    flex-shrink: 0;
+  }
+
+  .rank-badge.s { background: var(--rank-s-bg); color: var(--rank-s-text); }
+  .rank-badge.a { background: var(--rank-a-bg); color: var(--rank-a-text); }
+  .rank-badge.b { background: var(--rank-b-bg); color: var(--rank-b-text); }
+  .rank-badge.none { background: #ece4d6; color: #6b5f57; }
+
+  .shop-name {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    font-weight: 600;
+    line-height: 1.2;
+    padding-top: 0.15rem;
+  }
+
+  .shop-link {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px dotted var(--text-faint);
+    transition: color 0.2s ease, border-color 0.2s ease;
+  }
+
+  .shop-link:hover {
+    color: var(--primary);
+    border-bottom-color: var(--primary);
+  }
+
+  .shop-map-icon {
+    width: 13px;
+    height: 13px;
+    margin-left: 0.3rem;
+    color: var(--text-faint);
+    vertical-align: middle;
+    transition: color 0.2s ease;
+  }
+
+  .shop-link:hover .shop-map-icon {
+    color: var(--primary);
+  }
+
+  /* 全店舗マップ */
+  .map-panel {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 2px;
+    box-shadow: var(--shadow-sm);
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .map-panel-title {
+    font-family: var(--font-body);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--primary);
+    margin-bottom: 0.3rem;
+  }
+
+  .map-panel-desc {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    margin-bottom: 0.85rem;
+  }
+
+  .map-panel-embed {
+    border-radius: 2px;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+  }
+
+  .map-panel-embed iframe {
+    display: block;
+    width: 100%;
+    height: 460px;
+    border: 0;
+  }
+
+  .map-panel-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 460px;
+    background: var(--bg-main);
+    color: var(--text-muted);
+    font-size: 0.88rem;
+    text-align: center;
+    padding: 1.5rem;
+    line-height: 1.7;
+  }
+
+  .card-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem 0.75rem;
+    margin-bottom: 0.6rem;
+    font-size: 0.86rem;
+    color: var(--text-muted);
+  }
+
+  .meta-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    background: transparent;
+    padding: 0;
+    border-radius: 0;
+  }
+
+  .crowd-◎ { color: var(--crowd-good); font-weight: 600; }
+  .crowd-○ { color: var(--crowd-warn); font-weight: 600; }
+  .crowd-△ { color: var(--crowd-bad); font-weight: 600; }
+
+  .card-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    flex-grow: 1;
+  }
+
+  .info-group {
+    font-size: 0.92rem;
+  }
+
+  .info-group-title {
+    font-family: var(--font-body);
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--gold);
+    margin-bottom: 0.15rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+  }
+
+  .info-list {
+    list-style-type: none;
+    padding-left: 0;
+  }
+
+  .info-list li {
+    position: relative;
+    margin-bottom: 0.05rem;
+    padding-left: 1rem;
+    color: var(--text-main);
+  }
+
+  .info-list li::before {
+    content: "–";
+    position: absolute;
+    left: 0;
+    color: var(--text-faint);
+  }
+
+  .highlight-order {
+    background: #f6ead7;
+    border-left: 3px solid var(--primary);
+    padding: 0.6rem 0.9rem;
+    border-radius: 0 2px 2px 0;
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-style: italic;
+    color: var(--primary-dark);
+  }
+
+  /* TOP20 リスト */
+  .top20-grid {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+    border-top: 1px solid var(--border-color);
+  }
+  @media (min-width: 900px) {
+    .top20-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .top-item {
+    background: transparent;
+    padding: 0.4rem 0.5rem;
+    border-radius: 0;
+    display: flex;
+    align-items: baseline;
+    gap: 0.85rem;
+    box-shadow: none;
+    border: none;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .top-number {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-faint);
+    width: 2.25rem;
+    text-align: right;
+  }
+
+  .top-content {
+    flex-grow: 1;
+  }
+
+  .top-name {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.05rem;
+    color: var(--text-main);
+  }
+
+  .top-target {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.15rem;
+  }
+
+  .top-note {
+    font-size: 0.86rem;
+    color: var(--crowd-bad);
+    margin-top: 0.15rem;
+    font-weight: 600;
+  }
+
+  /* 代替ルール */
+  .alt-rules-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    margin-bottom: 1rem;
+  }
+
+  .alt-rule {
+    display: flex;
+    align-items: center;
+    background: var(--bg-card);
+    padding: 0.5rem 1rem;
+    border-radius: 2px;
+    border: 1px solid var(--border-color);
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  .alt-condition {
+    font-family: var(--font-display);
+    font-weight: 600;
+    color: var(--primary);
+    flex-basis: 250px;
+    flex-grow: 1;
+  }
+
+  .alt-arrow {
+    color: var(--text-faint);
+  }
+
+  .alt-targets {
+    font-weight: 500;
+    color: var(--text-main);
+    flex-basis: 300px;
+    flex-grow: 2;
+  }
+
+  .alt-message {
+    background: var(--bg-card);
+    padding: 0.85rem 1.1rem;
+    border-radius: 2px;
+    border: 1px solid var(--border-color);
+    border-left: 3px solid var(--primary);
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 500;
+    font-size: 1.15rem;
+    line-height: 1.45;
+    color: var(--text-main);
+  }
+
+  /* 優先しないもの */
+  .not-priority-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 0.6rem;
+  }
+
+  .not-card {
+    background: var(--bg-card);
+    padding: 0.75rem 1rem;
+    border-radius: 2px;
+    border: 1px solid var(--border-color);
+    border-left: 3px solid var(--crowd-bad);
+  }
+
+  .not-target {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.05rem;
+    margin-bottom: 0.2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-main);
+  }
+
+  .not-reason {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+  }
+
+  /* アイコン */
+  .icon {
+    width: 16px;
+    height: 16px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  /* SVG定義用非表示 */
+  .svg-defs { display: none; }
+
+  /* 検索・絞り込みバー */
+  .filter-bar {
+    position: sticky;
+    top: 0;
+    z-index: 30;
+    background: var(--bg-page);
+    padding: 0.65rem 0;
+    margin: 0 -1rem 0.5rem;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .filter-bar-inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0 1rem;
+  }
+
+  .filter-search-input {
+    flex: 1 1 200px;
+    min-width: 140px;
+    font-family: var(--font-body);
+    font-size: 0.88rem;
+    color: var(--text-main);
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 999px;
+    padding: 0.5rem 0.9rem;
+  }
+
+  .filter-search-input:focus {
+    outline: none;
+    border-color: var(--primary);
+  }
+
+  .filter-search-input::placeholder {
+    color: var(--text-faint);
+  }
+
+  .filter-area-select {
+    flex: 0 0 auto;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    color: var(--text-main);
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 999px;
+    padding: 0.5rem 1.8rem 0.5rem 0.9rem;
+    cursor: pointer;
+    appearance: none;
+    background-image: linear-gradient(45deg, transparent 50%, var(--text-muted) 50%), linear-gradient(135deg, var(--text-muted) 50%, transparent 50%);
+    background-position: calc(100% - 1rem) center, calc(100% - 0.7rem) center;
+    background-size: 5px 5px, 5px 5px;
+    background-repeat: no-repeat;
+  }
+
+  .filter-area-select:focus {
+    outline: none;
+    border-color: var(--primary);
+  }
+
+  .filter-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+  }
+
+  .filter-chip {
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 999px;
+    padding: 0.45rem 0.8rem;
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+
+  .filter-chip:hover {
+    border-color: var(--text-muted);
+  }
+
+  .filter-chip.is-active {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: #fdf6ee;
+  }
+
+  .filter-count {
+    font-size: 0.8rem;
+    color: var(--text-faint);
+    margin-left: auto;
+    white-space: nowrap;
+  }
+
+  .card.is-hidden {
+    display: none;
+  }
+
+  .section-block.is-empty {
+    display: none;
+  }
+
+  /* 目次クイックアクセス */
+  .toc-fab {
+    position: fixed;
+    right: 1.25rem;
+    bottom: 1.25rem;
+    z-index: 40;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: var(--primary);
+    color: #fdf6ee;
+    border: none;
+    border-radius: 999px;
+    padding: 0.8rem 1.2rem;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    box-shadow: var(--shadow-md);
+    cursor: pointer;
+  }
+
+  .toc-fab:hover {
+    background: var(--primary-dark);
+  }
+
+  .toc-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(36, 28, 22, 0.45);
+    z-index: 50;
+    display: none;
+    align-items: flex-end;
+    justify-content: center;
+  }
+
+  .toc-overlay.is-open {
+    display: flex;
+  }
+
+  .toc-overlay-panel {
+    width: 100%;
+    max-width: 640px;
+    max-height: 75vh;
+    overflow-y: auto;
+    background: var(--bg-card);
+    border-radius: 12px 12px 0 0;
+    padding: 1.25rem 1.5rem 1.75rem;
+    box-shadow: var(--shadow-md);
+  }
+
+  .toc-overlay-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.85rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .toc-overlay-header span {
+    font-family: var(--font-body);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--primary);
+  }
+
+  .toc-overlay-close {
+    background: none;
+    border: none;
+    font-size: 1.4rem;
+    line-height: 1;
+    color: var(--text-muted);
+    cursor: pointer;
+    padding: 0.25rem;
+  }
+
+  .toc-overlay-close:hover {
+    color: var(--primary);
+  }
+
+  /* 近くの店クイックアクセス */
+  .near-fab {
+    position: fixed;
+    left: 1.25rem;
+    bottom: 1.25rem;
+    z-index: 40;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: var(--text-main);
+    color: #fdf6ee;
+    border: none;
+    border-radius: 999px;
+    padding: 0.8rem 1.2rem;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    box-shadow: var(--shadow-md);
+    cursor: pointer;
+  }
+
+  .near-fab:hover {
+    background: #000;
+  }
+
+  .near-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .near-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.6rem 0.75rem;
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+    text-decoration: none;
+    color: var(--text-main);
+    transition: border-color 0.15s ease, background 0.15s ease;
+  }
+
+  .near-item:hover {
+    border-color: var(--primary);
+    background: var(--bg-main);
+  }
+
+  .near-rank {
+    width: 26px;
+    height: 26px;
+    font-size: 0.85rem;
+  }
+
+  .near-name {
+    flex: 1;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+
+  .near-dist {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    white-space: nowrap;
+  }
+
+  .near-empty {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    padding: 1rem 0.25rem;
+  }
+
+  .dist-badge {
+    color: var(--primary) !important;
+    font-weight: 600;
+  }
+
+  /* スマートフォン向けレイアウト */
+  @media (max-width: 640px) {
+    .layout {
+      padding: 1rem 0.85rem 1.5rem;
+      gap: 0.85rem;
+    }
+
+    .sidebar {
+      padding: 0.85rem 1rem;
+    }
+
+    .toc-list {
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+
+    .toc-link {
+      padding: 0.55rem 0.15rem;
+    }
+
+    .legend-panel {
+      grid-template-columns: 1fr;
+      padding: 1rem 1.1rem;
+      gap: 1rem;
+    }
+
+    .cards-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .not-priority-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .map-panel {
+      padding: 1rem 1.1rem;
+    }
+
+    .map-panel-embed iframe,
+    .map-panel-placeholder {
+      height: 300px;
+    }
+
+    .page-title {
+      font-size: 1.9rem;
+    }
+
+    .section-title {
+      font-size: 1.4rem;
+    }
+
+    .alt-condition,
+    .alt-targets {
+      flex-basis: 100%;
+    }
+
+    .toc-fab,
+    .near-fab {
+      padding: 0.7rem 1.05rem;
+      font-size: 0.8rem;
+    }
+
+    .toc-fab {
+      right: 1rem;
+      bottom: 1rem;
+    }
+
+    .near-fab {
+      left: 1rem;
+      bottom: 1rem;
+    }
+
+    .toc-overlay-panel {
+      max-height: 80vh;
+      padding: 1.1rem 1.25rem 1.5rem;
+    }
+
+    .filter-bar {
+      margin: 0 -0.85rem 0.5rem;
+    }
+
+    .filter-bar-inner {
+      padding: 0 0.85rem;
+    }
+
+    .filter-count {
+      flex-basis: 100%;
+      margin-left: 0;
+      text-align: right;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- 共通SVGアイコン定義 -->
+<svg class="svg-defs">
+  <symbol id="icon-pin" viewBox="0 0 24 24">
+    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+    <circle cx="12" cy="10" r="3"></circle>
+  </symbol>
+  <symbol id="icon-dollar" viewBox="0 0 24 24">
+    <line x1="12" y1="1" x2="12" y2="23"></line>
+    <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+  </symbol>
+  <symbol id="icon-users" viewBox="0 0 24 24">
+    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+    <circle cx="9" cy="7" r="4"></circle>
+    <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+  </symbol>
+  <symbol id="icon-arrow-right" viewBox="0 0 24 24">
+    <line x1="5" y1="12" x2="19" y2="12"></line>
+    <polyline points="12 5 19 12 12 19"></polyline>
+  </symbol>
+  <symbol id="icon-x" viewBox="0 0 24 24">
+    <line x1="18" y1="6" x2="6" y2="18"></line>
+    <line x1="6" y1="6" x2="18" y2="18"></line>
+  </symbol>
+  <symbol id="icon-tag" viewBox="0 0 24 24">
+    <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path>
+    <line x1="7" y1="7" x2="7.01" y2="7"></line>
+  </symbol>
+</svg>
+
+<div class="layout">
+  
+  <!-- 目次(上部) -->
+  <nav class="sidebar">
+    <div class="sidebar-title">目次</div>
+    <ul class="toc-list">
+      <li class="toc-item"><a href="#sec-1" class="toc-link"><span class="toc-num">01</span><span class="toc-text">NYベーグル</span></a></li>
+      <li class="toc-item"><a href="#sec-2" class="toc-link"><span class="toc-num">02</span><span class="toc-text">Breakfast Sandwich / Bodega</span></a></li>
+      <li class="toc-item"><a href="#sec-3" class="toc-link"><span class="toc-num">03</span><span class="toc-text">NYピザ</span></a></li>
+      <li class="toc-item"><a href="#sec-4" class="toc-link"><span class="toc-num">04</span><span class="toc-text">Jewish Deli / NYの古典</span></a></li>
+      <li class="toc-item"><a href="#sec-5" class="toc-link"><span class="toc-num">05</span><span class="toc-text">ハンバーガー / ホットドッグ</span></a></li>
+      <li class="toc-item"><a href="#sec-6" class="toc-link"><span class="toc-num">06</span><span class="toc-text">イタリア系サンドイッチ</span></a></li>
+      <li class="toc-item"><a href="#sec-7" class="toc-link"><span class="toc-num">07</span><span class="toc-text">タコス・メキシコ料理</span></a></li>
+      <li class="toc-item"><a href="#sec-8" class="toc-link"><span class="toc-num">08</span><span class="toc-text">Chinatown / 中国料理</span></a></li>
+      <li class="toc-item"><a href="#sec-9" class="toc-link"><span class="toc-num">09</span><span class="toc-text">韓国料理 / Koreatown</span></a></li>
+      <li class="toc-item"><a href="#sec-10" class="toc-link"><span class="toc-num">10</span><span class="toc-text">インド / 南アジア / 中東</span></a></li>
+      <li class="toc-item"><a href="#sec-11" class="toc-link"><span class="toc-num">11</span><span class="toc-text">その他の移民系NY料理</span></a></li>
+      <li class="toc-item"><a href="#sec-12" class="toc-link"><span class="toc-num">12</span><span class="toc-text">スイーツ / NY名物</span></a></li>
+      <li class="toc-item"><a href="#sec-13" class="toc-link"><span class="toc-num">13</span><span class="toc-text">NYらしい追加の食べ物</span></a></li>
+      <li class="toc-item"><a href="#sec-14" class="toc-link"><span class="toc-num">14</span><span class="toc-text">Food Hall / Market</span></a></li>
+      <li class="toc-item"><a href="#sec-15" class="toc-link"><span class="toc-num">15</span><span class="toc-text">クラフトビール / NYのバー</span></a></li>
+      <li class="toc-item"><a href="#sec-16" class="toc-link"><span class="toc-num">16</span><span class="toc-text">カフェ・コーヒー</span></a></li>
+      <li class="toc-item"><a href="#sec-17" class="toc-link"><span class="toc-num">17</span><span class="toc-text">マクドナルド</span></a></li>
+      <li class="toc-item"><a href="#sec-18" class="toc-link"><span class="toc-num">18</span><span class="toc-text">私なら今回優先するTOP20</span></a></li>
+      <li class="toc-item"><a href="#sec-19" class="toc-link"><span class="toc-num">19</span><span class="toc-text">行列を見たときの代替ルール</span></a></li>
+      <li class="toc-item"><a href="#sec-20" class="toc-link"><span class="toc-num">20</span><span class="toc-text">今回あえて優先しないもの</span></a></li>
+    </ul>
+  </nav>
+
+  <!-- メインコンテンツ -->
+  <main class="main-content">
+    
+    <div class="page-top-info">
+      <span class="page-kicker">NY Food Guide</span>
+      <h1 class="page-title">ニューヨーク 食事・カフェ候補一覧</h1>
+      <div class="page-date">2026年8月24日時点</div>
+    </div>
+
+    <!-- 検索・絞り込みバー -->
+    <div class="filter-bar">
+      <div class="filter-bar-inner">
+        <input type="text" id="filterSearch" class="filter-search-input" placeholder="店名・エリア・食べ物で検索">
+        <select id="areaSelect" class="filter-area-select">
+          <option value="">すべてのエリア</option>
+          <option value="Chelsea">Chelsea</option>
+          <option value="Chelsea Market">Chelsea Market</option>
+          <option value="Chinatown">Chinatown</option>
+          <option value="East Village">East Village</option>
+          <option value="Financial District">Financial District</option>
+          <option value="Flatiron">Flatiron</option>
+          <option value="Grand Central">Grand Central</option>
+          <option value="Greenwich Village">Greenwich Village</option>
+          <option value="Hell's Kitchen">Hell's Kitchen</option>
+          <option value="Koreatown">Koreatown</option>
+          <option value="Lower East Side">Lower East Side</option>
+          <option value="Madison Square Park">Madison Square Park</option>
+          <option value="Manhattan">Manhattan</option>
+          <option value="Midtown">Midtown</option>
+          <option value="Midtown East">Midtown East</option>
+          <option value="Murray Hill">Murray Hill</option>
+          <option value="Penn Station">Penn Station</option>
+          <option value="Pier 57">Pier 57</option>
+          <option value="Rockefeller Center">Rockefeller Center</option>
+          <option value="SoHo">SoHo</option>
+          <option value="Times Square">Times Square</option>
+          <option value="Upper East Side">Upper East Side</option>
+          <option value="Upper West Side">Upper West Side</option>
+          <option value="West Village">West Village</option>
+        </select>
+        <div class="filter-chips" id="rankChips">
+          <button type="button" class="filter-chip is-active" data-rank="all">すべて</button>
+          <button type="button" class="filter-chip" data-rank="s">S</button>
+          <button type="button" class="filter-chip" data-rank="a">A</button>
+          <button type="button" class="filter-chip" data-rank="b">B</button>
+        </div>
+        <button type="button" class="filter-chip" id="favOnlyChip">☆行きたいのみ</button>
+        <button type="button" class="filter-chip" id="nearSortChip">📍近い順</button>
+        <span class="filter-count" id="filterCount"></span>
+      </div>
+    </div>
+
+    <!-- 凡例 -->
+    <div class="legend-panel">
+      <div class="legend-group">
+        <h3>優先度・おすすめ度</h3>
+        <ul class="legend-list">
+          <li class="legend-item"><span class="rank-badge s">S</span> 今回ぜひ経験したい</li>
+          <li class="legend-item"><span class="rank-badge a">A</span> 近くにあればかなりおすすめ</li>
+          <li class="legend-item"><span class="rank-badge b">B</span> 時間・場所が合えば</li>
+        </ul>
+      </div>
+      <div class="legend-group">
+        <h3>混雑状況</h3>
+        <ul class="legend-list">
+          <li class="legend-item"><span class="crowd-◎">◎</span> 比較的入りやすい</li>
+          <li class="legend-item"><span class="crowd-○">○</span> 多少混むことあり</li>
+          <li class="legend-item"><span class="crowd-△">△</span> ピーク時は行列。長ければ別の店へ</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 全店舗マップ -->
+    <div class="map-panel">
+      <div class="map-panel-title">All Locations</div>
+      <div class="map-panel-desc">このページに掲載した全66店舗(S・A・B評価)の位置を1つの地図にまとめています。現在地の近くに対象店舗があるかの確認にご利用ください。</div>
+      <div class="map-panel-embed">
+        <iframe src="https://www.google.com/maps/d/embed?mid=1xsWdBsRDEOclTyuGw2kvjK81qBvsaP8&amp;ehbc=2E312F" loading="lazy" title="全店舗マップ"></iframe>
+      </div>
+    </div>
+
+    <!-- 1. NYベーグル -->
+    <div id="sec-1" class="section-block">
+      <h2 class="section-title">1. NYベーグル</h2>
+      <div class="cards-grid">
+        <!-- Russ & Daughters -->
+        <div class="card" data-shop="Russ &amp; Daughters">
+          <div class="card-header">
+            <span class="rank-badge s">S</span>
+            <h3 class="shop-name"><a class="shop-link" href="https://www.google.com/maps/dir/?api=1&amp;destination=Russ%20%26%20Daughters%2C%20Lower%20East%20Side%2C%20New%20York&amp;travelmode=walking" target="_blank" rel="noopener noreferrer">Russ & Daughters<svg class="icon shop-map-icon"><use href="#icon-pin"></use></svg></a></h3>
+          <div class="card-actions"><button class="fav-btn fav-want" type="button" data-fav="want" aria-label="行きたい">☆</button><button class="fav-btn fav-done" type="button" data-fav="done" aria-label="行った">✓</button></div></div>
+          <div class="card-meta">
+            <span class="meta-item"><svg class="icon"><use href="#icon-pin"></use></svg>Lower East Side</span>
+            <span class="meta-item"><svg class="icon"><use href="#icon-dollar"></use></svg>約$15～25</span>
+            <span class="meta-item crowd-○"><svg class="icon"><use href="#icon-users"></use></svg>混雑: ○</span>
+          </div>
+          <div class="card-body">
+            <div class="info-group">
+              <div class="info-group-title">食べるもの</div>
+              <ul class="info-list">
+                <li>Bagel + cream cheese + lox</li>
+                <li>Everything bagel</li>
+              </ul>
+            </div>
+            <div class="info-group">
+              <div class="info-group-title">特徴</div>
+              <ul class="info-list">
+                <li>NYのJewish appetizing文化を経験する代表格</li>
+                <li>「NYらしいものを1つ」と言われれば最有力</li>
+                <li>ベーグルそのもの＋スモークサーモンを楽しむ店</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- Ess-a-Bagel -->
+        <div class="card" data-shop="Ess-a-Bagel">
+          <div class="card-header">
+            <span class="rank-badge a">A</span>
+            <h3 class="shop-name"><a class="shop-link" href="https://www.google.com/maps/dir/?api=1&amp;destination=Ess-a-Bagel%2C%20Midtown%2C%20New%20York&amp;travelmode=walking" target="_blank" rel="noopener noreferrer">Ess-a-Bagel<svg class="icon shop-map-icon"><use href="#icon-pin"></use></svg></a></h3>
+          <div class="card-actions"><button class="fav-btn fav-want" type="button" data-fav="want" aria-label="行きたい">☆</button><button class="fav-btn fav-done" type="button" data-fav="done" aria-label="行った">✓</button></div></div>
+          <div class="card-meta">
+            <span class="meta-item"><svg class="icon"><use href="#icon-pin"></use></svg>Midtown / Kips Bayなど</span>
+            <span class="meta-item"><svg class="icon"><use href="#icon-dollar"></use></svg>約$10～20</span>
+            <span class="meta-item crowd-○"><svg class="icon"><use href="#icon-users"></use></svg>混雑: ○</span>
+          </div>
+          <div class="card-body">
+            <div class="info-group">
+              <div class="info-group-title">食べるもの</div>
+              <ul class="info-list">
+                <li>Everything bagel + scallion cream cheese</li>
+                <li>BEC系</li>
+              </ul>
+            </div>
+            <div class="info-group">
+              <div class="info-group-title">特徴</div>
+              <ul class="info-list">
+                <li>1976年創業のNY定番ベーグル</li>
+                <li>巨大でNYらしいベーグル</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- Murray's Bagels -->
+        <div class="card" data-shop="Murray's Bagels">
+          <div class="card-header">
+            <span class="rank-badge a">A</span>
+            <h3 class="shop-name"><a class="shop-link" href="https://www.google.com/maps/dir/?api=1&amp;destination=Murray's%20Bagels%2C%20Greenwich%20Village%2C%20New%20York&amp;travelmode=walking" target="_blank" rel="noopener noreferrer">Murray's Bagels<svg class="icon shop-map-icon"><use href="#icon-pin"></use></svg></a></h3>
+          <div class="card-actions"><button class="fav-btn fav-want" type="button" data-fav="want" aria-label="行きたい">☆</button><button class="fav-btn fav-done" type="button" data-fav="done" aria-label="行った">✓</button></div></div>
+          <div class="card-meta">
+            <span class="meta-item"><svg class="icon"><use href="#icon-pin"></use></svg>Greenwich Village</span>
+            <span class="meta-item"><svg class="icon"><use href="#icon-dollar"></use></svg>約$10～20</span>
+            <span class="meta-item crowd-○"><svg class="icon"><use href="#icon-users"></use></svg>混雑: ○</span>
+          </div>
+          <div class="card-body">
+            <div class="info-group">
+              <div class="info-group-title">食べるもの</div>
+              <ul class="info-list">
+                <li>Everything bagel</li>
+                <li>Lox + cream cheese</li>
+              </ul>
+            </div>
+            <div class="info-group">
+              <div class="info-group-title">特徴</div>
+              <ul class="info-list">
+                <li>Village散策中に使いやすい</li>
+                <li>クラシックなNYベーグル店</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- Best Bagel & Coffee -->
+        <div class="card" data-shop="Best Bagel &amp; Coffee">
+          <div class="card-header">
+            <span class="rank-badge a">A</span>
+            <h3 class="shop-name"><a class="shop-link" href="https://www.google.com/maps/dir/?api=1&amp;destination=Best%20Bagel%20%26%20Coffee%2C%20Penn%20Station%2C%20New%20York&amp;travelmode=walking" target="_blank" rel="noopener noreferrer">Best Bagel & Coffee<svg class="icon shop-map-icon"><use href="#icon-pin"></use></svg></a></h3>
+          <div class="card-actions"><button class="fav-btn fav-want" type="button" data-fav="want" aria-label="行きたい">☆</button><button class="fav-btn fav-done" type="button" data-fav="done" aria-label="行った">✓</button></div></div>
+          <div class="card-meta">
+            <span class="meta-item"><svg class="icon"><use href="#icon-pin"></use></svg>Penn Station / Herald Square周辺</span>
+            <span class="meta-item"><svg class="icon"><use href="#icon-dollar"></use></svg>約$10～20</span>
+            <span class="meta-item crowd-○"><svg class="icon"><use href="#icon-users"></use></svg>混雑: ○</span>
+          </div>
+          <div class="card-body">
+            <div class="info-group">
+              <div class="info-group-title">食べるもの</div>
+              <ul class="info-list">
+                <li>Bagel + cream cheese</li>
+                <li>Breakfast sandwich</li>
+              </ul>
+            </div>
+            <div class="info-group">
+              <div class="info-group-title">特徴</div>
+              <ul class="info-list">
+                <li>Penn Station周辺で非常に使いやすい</li>
+                <li>朝食候補として実用性が高い</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- Tal Bagels -->
+        <div class="card" data-shop="Tal Bagels">
+          <div class="card-header">
+            <span class="rank-badge a">A</span>
+            <h3 class="shop-name"><a class="shop-link" href="https://www.google.com/maps/dir/?api=1&amp;destination=Tal%20Bagels%2C%20Upper%20East%20Side%2C%20New%20York&amp;travelmode=walking" target="_blank" rel="noopener noreferrer">Tal Bagels<svg class="icon shop-map-icon"><use href="#icon-pin"></use></svg></a></h3>
+          <div class="card-actions"><button class="fav-btn fav-want" type="button" data-fav="want" aria-label="行きたい">☆</button><button class="fav-btn fav-done" type="button" data-fav="done" aria-label="行った">✓</button></div></div>
+          <div class="card-meta">
+            <span class="meta-item"><svg class="icon"><use href="#icon-pin"></use></svg>Upper East Sideなど</span>
+            <span class="meta-item"><svg class="icon"><use href="#icon-dollar"></use></svg>約$10～20</span>
+            <span class="meta-item crowd-◎"><svg class="icon"><use href="#icon-users"></use></svg>混雑: ◎～○</span>
+          </div>
+          <div class="card-body">
+            <div class="info-group">
+              <div class="info-group-title">食べるもの</div>
+              <ul class="info-list">
+                <li>Bagel + cream cheese</li>
+                <li>Lox</li>
+              </ul>
+            </div>
+            <div class="info-group">
+              <div class="info-group-title">特徴</div>
+              <ul class="info-list">
+                <li>Met / Guggenheim方面の日に使いやすい</li>
+                <li>地元の日常的ベーグル店に近い</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. Breakfast Sandwich / Bodega -->
+    <div id="sec-2" class="section-block">
+      <h2 class="section-title">2. Breakfast Sandwich / Bodega</h2>
+      <div class="cards-grid">
+        <div class="card" data-shop="普通のBodega / Deli">
+          <div class="card-header">
+            <span class="rank-badge s">S</span>
+            <h3 class="shop-name">普通のBodega / Deli</h3>
+          <div class="card-actions"><button class="fav-btn fav-want" type="button" data-fav="want" aria-label="行きたい">☆</button><button class="fav-btn fav-done" type="button" data-fav="done" aria-label="行った">✓</button></div></div>
+          <div class="card-meta">
+            <span class="meta-item"><svg class="icon"><use href="#icon-pin"></use></svg>ホテル周辺など、どこでも</span>
+            <span class="meta-item"><svg class="icon"><use href="#icon-dollar"></use></svg>約$5～10</span>
+            <span class="meta-item crowd-◎"><svg class="icon"><use href="#icon-users"></use></svg>混雑: ◎</span>
+          </div>
+          <div class="card-body">
+            <div class="info-group">
+              <div class="info-group-title">食べるもの</div>
+              <ul class="info-list">
+                <li>Bacon, Egg and Cheese on a roll（BEC）</li>
+              </ul>
+            </div>
+            <div class="info-group">
+              <div class="info-group-title">注文方法</div>
+              <div class="highlight-order">“Bacon, egg and cheese on a roll, please.”</div>
+            </div>
+            <div class="info-group">
+              <div class="info-group-title">特徴</div>
+              <ul class="info-list">
+                <li>NYの普通の朝の日常体験</li>
+                <li>有名店を探す必要なし</li>
+                <li>むしろ地元の普通の店で食べることに価値あり</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <div class="card" data-shop="Chopped Cheese">
+          <div class="card-header">
+            <span class="rank-badge a">A</span>
+            <h3 class="shop-name">Chopped Cheese</h3>
+          <div class="card-actions"><button class="fav-btn fav-want" type="button" data-fav="want" aria-label="行きたい">☆</button><button class="fav-btn fav-done" type="button" data-fav="done" aria-label="行った">✓</button></div></div>
+          <div class="card-meta">
+            <span class="meta-item"><svg class="icon"><use href="#icon-pin"></use></svg>Bodega中心</span>
+            <span class="meta-item"><svg class="icon"><use href="#icon-dollar"></use></svg>約$7～12</span>
+          </div>
+          <div class="card-body">
+            <div class="info-group">
+              <div class="info-group-title">食べるもの</div>
+              <ul class="info-list">
+                <li>Chopped cheese</li>
+              </ul>
+            </div>
+            <div class="info-group">
+              <div class="info-group-title">特徴</div>
+              <ul class="info-list">
+                <li>牛挽肉、チーズ、玉ねぎ等をパンに挟むNYローカルフード</li>
+                <li>Harlem / Bronx発祥文化</li>
+                <li>見つけたら1回試す程度でよい</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. NYピザ -->
+    <div id="sec-3" class="section-block">
+      <h2 class="section-title">3. NYピザ</h2>
+      <div class="cards-grid">
+        <div class="card" data-shop="Joe's Pizza">
+          <div class="card-header">
+            <span class="rank-badge s">S</span>
+            <h3 class="shop-name"><a class="shop-link" href="https://www.google.com/maps/dir/?api=1&amp;destination=Joe%27s%20Pizza%2C%20Greenwich%20Village%2C%20New%20York&amp;travelmode=walking" target="_blank" rel="noopener noreferrer">Joe's Pizza<svg class="icon shop-map-icon"><use href="#icon-pin"></use></svg></a></h3>
+          <div class="card-actions"><button class="fav-btn fav-want" type="button" data-fav="want" aria-label="行きたい">☆</button><button class="fav-btn fav-done" type="button" data-fav="done" aria-label="行った">✓</button></div></div>
+          <div class="card-meta">
+            <span class="meta-item"><svg class="icon"><use href="#icon-pin"></use></svg>Times Square / Greenwich Villageほか</span>
+            <span class="meta-item"><svg class="icon"><use href="#icon-dollar"></use></svg>約$5～15</span>
+            <span class="meta-item crowd-○"><svg class="icon"><use href="#icon-users"></use></svg>混雑: ○</span>
+          </div>
+          <div class="card-body">
+            <div class="info-group">
+              <div class="info-group-title">食べるもの</div>
+              <ul class="info-list">
+                <li>Plain cheese slice</li>
+                <li>Pepperoni slice</li>
+              </ul>
+            </div>
+            <div class="info-group">
+              <div class="info-group-title">特徴</div>
+              <ul class="info-list">
+                <li>典型的なNew York slice</li>
+                <li>1～2枚だけ食べれば十分</li>
+                <li>NYピザの基準点として最適</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <div class="card" data-shop="L'Industrie Pizzeria">
+          <div class="card-header">
+            <span class="rank-badge s">S</span>
+            <h3 class="shop-name"><a class="shop-link" href="https://www.google.com/maps/dir/?api=1&amp;destination=L%27Industrie%20Pizzeria%2C%20West%20Village%2C%20New%20York&amp;travelmode=walking" target="_blank" rel="noopener noreferrer">L'Industrie Pizzeria<svg class="icon shop-map-icon"><use href="#icon-pin"></use></svg></a></h3>
+          <div class="card-actions"><button class="fav-btn fav-want" type="button" data-fav="want" aria-label="行きたい">☆</button><button class="fav-btn fav-done" type="button" data-fav="done" aria-label="行った">✓</button></div></div>
+          <div class="card-meta">
+            <span class="meta-item"><svg class="icon"><use href="#icon-pin"></use></svg>West Village</span>
+            <span class="meta-item"><svg class="icon"><use href="#icon-dollar"></use></svg>約$10～20</span>
+            <span class="meta-item crowd-△"><svg class="icon"><use href="#icon-users"></use></svg>混雑: △</span>
+          </div>
+          <div class="card-body">
+            <div class="info-group">
+              <div class="info-group-title">食べるもの</div>
+              <ul class="info-list">
+                <li>Margherita系</li>
+                <li>Burrata系</li>
+                <li>その日の気になるslice</li>
+              </ul>
+            </div>
+            <div class="info-group">
+              <div class="info-group-title">特徴</div>
+              <ul class="info-list">
+                <li>現在のNYピザ人気を象徴する店</li>
+                <li>行列が短ければ行く</li>
+                <li>長ければ無理して並ばない</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" data-shop="Lucia Pizza of SoHo">
+          <div class="card-header">
+            <span class="rank-badge a">A</span>
+            <h3 class="shop-name"><a class="shop-link" href="https://www.google.com/maps/dir/?api=1&amp;destination=Lucia%20Pizza%20of%20SoHo%2C%20SoHo%2C%20New%20York&amp;travelmode=walking" target="_blank" rel="noopener noreferrer">Lucia Pizza of SoHo<svg class="icon shop-map-icon"><use href="#icon-pin"></use></svg></a></h3>
+          <div class="card-actions"><button class="fav-btn fav-want" type="button" data-fav="want" aria-label="行きたい">☆</button><button class="fav-btn fav-done" type="button" data-fav="done" aria-label="行った">✓</button></div></div>
+          <div class="card-meta">
+            <span class="meta-item"><svg class="icon"><use href="#icon-pin"></use></svg>SoHo / Canal Street</span>
+            <span class="meta-item"><svg class="icon"><use href="#icon-dollar"></use></svg>約$5～15</span>
+            <span class="meta-item crowd-◎"><svg class="icon"><use href="#icon-users"></use></svg>混雑: ◎～○</span>
+          </div>
+          <div class="card-body">
+            <div class="info-group">
+              <div class="info-group-title">食べるもの</div>
+              <ul class="info-list">
+                <li>Vodka slice</li>
+                <li>Plain slice</li>
+                <li>Cream of spinach slice</li>
+              </ul>
+            </div>
+            <div class="info-group">
+              <div class="info-group-title">特徴</div>
+              <ul class="info-list">
+                <li>SoHo散策との相性が非常に良い</li>
+                <li>L'Industrieより代替しやすい</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" data-shop="Scarr's Pizza">
+          <div class="card-header">
+            <span class="rank-badge a">A</span>
+            <h3 class="shop-name"><a class="shop-link" href="https://www.google.com/maps/dir/?api=1&amp;destination=Scarr's%20Pizza%2C%20Lower%20East%20Side%2C%20New%20York&amp;travelmode=walking" target="_blank" rel="noopener noreferrer">Scarr's Pizza<svg class="icon shop-map-icon"><use href="#icon-pin"></use></svg></a></h3>
+          <div class="card-actions"><button class="fav-btn fav-want" type="button" data-fav="want" aria-label="行きたい">☆</button><button class="fav-btn fav-done" type="button" data-fav="done" aria-label="行った">✓</button></div></div>
+          <div class="card-meta">
+            <span class="meta-item"><svg class="icon"><use href="#icon-pin"></use></svg>Lower East Side</span>
+            <span class="meta-item"><svg class="icon"><use href="#icon-dollar"></use></svg>約$10～20</span>
+            <span class="meta-item crowd-○"><svg class="icon"><use href="#icon-users"></use></svg>混雑: ○</span>
+          </div>
+          <div class="card-body">
+            <div class="info-group">
+              <div class="info-group-title">食べるもの</div>
+              <ul class="info-list">
+                <li>Plain slice</li>
+                <li>Pepperoni</li>
+              </ul>
+            </div>
+            <div class="info-group">
+              <div class="info-group-title">特徴</div>
+              <ul class="info-list">
+                <li>LESの人気slice shop</li>
+                <li>Russ & DaughtersやKatz's周辺と組み合わせやすい</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" data-shop="Vito's Slices and Ices">
+          <div class="card-header">
+            <span class="rank-badge a">A</span>
+            <h3 class="shop-name"><a class="shop-link" href="https://www.google.com/maps/dir/?api=1&amp;destination=Vito's%20Slices%20and%20Ices%2C%20Hell's%20Kitchen%2C%20New%20York&amp;travelmode=walking" target="_blank" rel="noopener noreferrer">Vito's Slices and Ices<svg class="icon shop-map-icon"><use href="#icon-pin"></use></svg></a></h3>
+          <div class="card-actions"><button class="fav-btn fav-want" type="button" data-fav="want" aria-label="行きたい">☆</button><button class="fav-btn fav-done" type="button" data-fav="done" aria-label="行った">✓</button></div></div>
+          <div class="card-meta">
+            <span class="meta-item"><svg class="icon"><use href="#icon-pin"></use></svg>Hell's Kitchen</span>
+            <span class="meta-item"><svg class="icon"><use href="#icon-dollar"></use></svg>約$10～20</span>
+            <span class="meta-item crowd-◎"><svg class="icon"><use href="#icon-users"></use></svg>混雑: ◎</span>
+          </div>
+          <div class="card-body">
+            <div class="info-group">
+              <div class="info-group-title">食べるもの</div>
+              <ul class="info-list">
+                <li>Classic slice</li>
+              </ul>
+            </div>
+            <div class="info-group">
+              <div class="info-group-title">特徴</div>
+              <ul class="info-list">
+                <li>比較的入りやすい</li>
+                <li>Hell's Kitchenでの代替候補として優秀</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. Jewish Deli / NYの古典 -->
+    <div id="sec-4" class="section-block">
+      <h2 class="section-title">4. Jewish Deli / NYの古典</h2>
+      <div class="cards-grid">
+        <div class="card" data-shop="Katz's Delicatessen">
+          <div class="card-header">
+            <span class="rank-badge s">S</span>
+            <h3 class="shop-name"><a class="shop-link" href="https://www.google.com/maps/dir/?api=1&amp;destination=Katz%27s%20Delicatessen%2C%20Lower%20East%20Side%2C%20New%20York&amp;travelmode=walking" target="_blank" rel="noopener noreferrer">Katz's Delicatessen<svg class="icon shop-map-icon"><use href="#icon-pin"></use></svg></a></h3>
+          <div class="card-actions"><button class="fav-btn fav-want" type="button" data-fav="want" aria-label="行きたい">☆</button><button class="fav-btn fav-done" type="button" data-fav="done" aria-label="行った">✓</button></div></div>
+          <div class="card-meta">
+            <span class="meta-item"><svg class="icon"><use href="#icon-pin"></use></svg>Lower East Side</span>
+            <span class="meta-item"><svg class="icon"><use href="#icon-dollar"></use></svg>約$30～40</span>
+            <span class="meta-item crowd-△"><svg class="icon"><use href="#icon-users"></use></svg>混雑: △</span>
+          </div>
+          <div class="card-body">
+            <div class="info-group">
+              <div class="info-group-title">食べるもの</div>
+              <ul class="info-list">
+                <li>Pastrami on rye</li>
+              </ul>
+            </div>
+            <div class="info-group">
+              <div class="info-group-title">特徴</div>
+              <ul class="info-list">
+                <li>NYを代表するパストラミ</li>
+                <li>観光客も多いが食文化として経験価値は高い</li>
+                <li>ピークを外す</li>
+                <li>列が極端なら無理しない</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" data-shop="2nd Ave Deli">
+          <div class="card-header">
+            <span class="rank-badge a">A</span>
+            <h3 class="shop-name"><a class="shop-link" href="https://www.google.com/maps/dir/?api=1&amp;destination=2nd%20Ave%20Deli%2C%20Murray%20Hill%2C%20New%20York&amp;travelmode=walking" target="_blank" rel="noopener noreferrer">2nd Ave Deli<svg class="icon shop-map-icon"><use href="#icon-pin"></use></svg></a></h3>
+          <div class="card-actions"><button class="fav-btn fav-want" type="button" data-fav="want" aria-label="行きたい">☆</button><button class="fav-btn fav-done" type="button" data-fav="done" aria-label="行った">✓</button></div></div>
+          <div class="card-meta">
+            <span class="meta-item"><svg class="icon"><use href="#icon-pin"></use></svg>Murray Hill</span>
+            <span class="meta-item"><svg class="icon"><use href="#icon-dollar"></use></svg>約$20～35</span>
+            <span class="meta-item crowd-◎"><svg class="icon"><use href="#icon-users"></use></svg>混雑: ◎～○</span>
+          </div>
+          <div class="card-body">
+            <div class="info-group">
+              <div class="info-group-title">食べるもの</div>
+              <ul class="info-list">
+                <li>Pastrami</li>
+                <li>Corned beef</li>
+                <li>Matzo ball soup</li>
+              </ul>
+            </div>
+            <div class="info-group">
+              <div class="info-group-title">特徴</div>
+              <ul class="info-list">
+                <li>Katz'sより入りやすい代替</li>
+                <li>クラシックなJewish deli</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" data-shop="Sarge's Delicatessen &amp; Diner">
+          <div class="card-header">
+            <span class="rank-badge a">A</span>
+            <h3 class="shop-name"><a class="shop-link" href="https://www.google.com/maps/dir/?api=1&amp;destination=Sarge's%20Delicatessen%20%26%20Diner%2C%20Murray%20Hill%2C%20New%20York&amp;travelmode=walking" target="_blank" rel="noopener noreferrer">Sarge's Delicatessen & Diner<svg class="icon shop-map-icon"><use href="#icon-pin"></use></svg></a></h3>
+          <div class="card-actions"><button class="fav-btn fav-want" type="button" data-fav="want" aria-label="行きたい">☆</button><button class="fav-btn fav-done" type="button" data-fav="done" aria-label="行った">✓</button></div></div>
+          <div class="card-meta">
+            <span class="meta-item"><svg class="icon"><use href="#icon-pin"></use></svg>Murray Hill</span>
+            <span class="meta-item"><svg class="icon"><use href="#icon-dollar"></use></svg>約$20～35</span>
+            <span class="meta-item crowd-◎"><svg class="icon"><use href="#icon-users"></use></svg>混雑: ◎</span>
+          </div>
+          <div class="card-body">
+            <div class="info-group">
+              <div class="info-group-title">食べるもの</div>
+              <ul class="info-list">
+                <li>Pastrami</li>
+                <li>Corned beef</li>
+                <li>Matzo ball soup</li>
+              </ul>
+            </div>
+            <div class="info-group">
+              <div class="info-group-title">特徴</div>
+              <ul class="info-list">
+                <li>NYらしいdeli＋diner</li>
+                <li>一人利用しやすい</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" data-shop="S&amp;P Lunch">
+          <div class="card-header">
+            <span class="rank-badge s">S</span>
+            <h3 class="shop-name"><a class="shop-link" href="https://www.google.com/maps/dir/?api=1&amp;destination=S%26P%20Lunch%2C%20Flatiron%2C%20New%20York&amp;travelmode=walking" target="_blank" rel="noopener noreferrer">S&P Lunch<svg class="icon shop-map-icon"><use href="#icon-pin"></use></svg></a></h3>
+          <div class="card-actions"><button class="fav-btn fav-want" type="button" data-fav="want" aria-label="行きたい">☆</button><button class="fav-btn fav-done" type="button" data-fav="done" aria-label="行った">✓</button></div></div>
+          <div class="card-meta">
+            <span class="meta-item"><svg class="icon"><use href="#icon-pin"></use></svg>Flatiron</span>
+            <span class="meta-item"><svg class="icon"><use href="#icon-dollar"></use></svg>約$15～30</span>
+            <span class="meta-item crowd-○"><svg class="icon"><use href="#icon-users"></use></svg>混雑: ○</span>
+          </div>
+          <div class="card-body">
+            <div class="info-group">
+              <div class="info-group-title">食べるもの</div>
+              <ul class="info-list">
+                <li>Tuna melt</li>
+                <li>Pastrami sandwich</li>
+                <li>Egg cream</li>
+                <li>Burger</li>
+              </ul>
+            </div>
+            <div class="info-group">
+              <div class="info-group-title">特徴</div>
+              <ul class="info-list">
+                <li>昔ながらのNY luncheonette文化の現代版</li>
+                <li>一人ならcounter席と非常に相性が良い</li>
+                <li>今回かなりおすすめ</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" data-shop="Yonah Schimmel's Knish Bakery">
+          <div class="card-header">
+            <span class="rank-badge a">A</span>
+            <h3 class="shop-name"><a class="shop-link" href="https://www.google.com/maps/dir/?api=1&amp;destination=Yonah%20Schimmel's%20Knish%20Bakery%2C%20Lower%20East%20Side%2C%20New%20York&amp;travelmode=walking" target="_blank" rel="noopener noreferrer">Yonah Schimmel's Knish Bakery<svg class="icon shop-map-icon"><use href="#icon-pin"></use></svg></a></h3>
+          <div class="card-actions"><button class="fav-btn fav-want" type="button" data-fav="want" aria-label="行きたい">☆</button><button class="fav-btn fav-done" type="button" data-fav="done" aria-label="行った">✓</button></div></div>
+          <div class="card-meta">
+            <span class="meta-item"><svg class="icon"><use href="#icon-pin"></use></svg>Lower East Side</span>
+            <span class="meta-item"><svg class="icon"><use href="#icon-dollar"></use></svg>約$5～10</span>
+            <span class="meta-item crowd-◎"><svg class="icon"><use href="#icon-users"></use></svg>混雑: ◎</span>
+          </div>
+          <div class="card-body">
+            <div class="info-group">
+              <div class="info-group-title">食べるもの</div>
+              <ul class="info-list">
+                <li>Potato knish</li>
+              </ul>
+            </div>
+            <div class="info-group">
+              <div class="info-group-title">特徴</div>
+              <ul class="info-list">
+                <li>1910年から続くNY移民食文化</li>
+                <li>食事というより軽食として使う</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. ハンバーガー / ホットドッグ -->
+    <div id="sec-5" class="section-block">
+      <h2 class="section-title">5. ハンバーガー / ホットドッグ</h2>
+      <div class="cards-grid">
+        <div class="card" data-shop="Hamburger America">
+          <div class="card-header">
+            <span class="rank-badge s">S</span>
+            <h3 class="shop-name"><a class="shop-link" href="https://www.google.com/maps/dir/?api=1&amp;destination=Hamburger%20America%2C%20SoHo%2C%20New%20York&amp;travelmode=walking" target="_blank" rel="noopener noreferrer">Hamburger America<svg class="icon shop-map-icon"><use href="#icon-pin"></use></svg></a></h3>
+          <div class="card-actions"><button class="fav-btn fav-want" type="button" data-fav="want" aria-label="行きたい">☆</button><button class="fav-btn fav-done" type="button" data-fav="done" aria-label="行った">✓</button></div></div>
+          <div class="card-meta">
+            <span class="meta-item"><svg class="icon"><use href="#icon-pin"></use></svg>SoHo / Greenwich Village境界</span>
+            <span class="meta-item"><svg class="icon"><use href="#icon-dollar"></use></svg>約$10～20</span>
+            <span class="meta-item crowd-○"><svg class="icon"><use href="#icon-users"></use></svg>混雑: ○</span>
+          </div>
+          <div class="card-body">
+            <div class="info-group">
+              <div class="info-group-title">食べるもの</div>
+              <ul class="info-list">
+                <li>Classic burger</li>
+                <li>Onion burger</li>
+              </ul>
+            </div>
+            <div class="info-group">
+              <div class="info-group-title">特徴</div>
+              <ul class="info-list">
+                <li>昔のアメリカのburger文化を現代NYで再構築</li>
+                <li>SoHoの日におすすめ</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" data-shop="7th Street Burger">
+          <div class="card-header">
+            <span class="rank-badge a">A</span>
+            <h3 class="shop-name"><a class="shop-link" href="https://www.google.com/maps/dir/?api=1&amp;destination=7th%20Street%20Burger%2C%20Manhattan%2C%20New%20York&amp;travelmode=walking" target="_blank" rel="noopener noreferrer">7th Street Burger<svg class="icon shop-map-icon"><use href="#icon-pin"></use></svg></a></h3>
+          <div class="card-actions"><button class="fav-btn fav-want" type="button" data-fav="want" aria-label="行きたい">☆</button><button class="fav-btn fav-done" type="button" data-fav="done" aria-label="行った">✓</button></div></div>
+          <div class="card-meta">
+            <span class="meta-item"><svg class="icon"><use href="#icon-pin"></use></svg>Manhattan各所</span>
+            <span class="meta-item"><svg class="icon"><use href="#icon-dollar"></use></svg>約$10～20</span>
+            <span class="meta-item crowd-◎"><svg class="icon"><use href="#icon-users"></use></svg>混雑: ◎～○</span>
+          </div>
+          <div class="card-body">
+            <div class="info-group">
+              <div class="info-group-title">食べるもの</div>
+              <ul class="info-list">
+                <li>Cheeseburger</li>
+                <li>Double cheeseburger</li>
+              </ul>
+            </div>
+            <div class="info-group">
+              <div class="info-group-title">特徴</div>
+              <ul class="info-list">
+                <li>近年のsmash burger文化</li>
+                <li>店舗多数で使いやすい</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" data-shop="Shake Shack">
+          <div class="card-header">
+            <span class="rank-badge a">A</span>
+            <h3 class="shop-name"><a class="shop-link" href="https://www.google.com/maps/dir/?api=1&amp;destination=Shake%20Shack%2C%20Madison%20Square%20Park%2C%20New%20York&amp;travelmode=walking" target="_blank" rel="noopener noreferrer">Shake Shack<svg class="icon shop-map-icon"><use href="#icon-pin"></use></svg></a></h3>
+          <div class="card-actions"><button class="fav-btn fav-want" type="button" data-fav="want" aria-label="行きたい">☆</button><button class="fav-btn fav-done" type="button" data-fav="done" aria-label="行った">✓</button></div></div>
+          <div class="card-meta">
+            <span class="meta-item"><svg class="icon"><use href="#icon-pin"></use></svg>Madison Square Parkほか多数</span>
+            <span class="meta-item"><svg class="icon"><use href="#icon-dollar"></use></svg>約$15～25</span>
+            <span class="meta-item crowd-○"><svg class="icon"><use href="#icon-users"></use></svg>混雑: ○</span>
+          </div>
+          <div class="card-body">
+            <div class="info-group">
+              <div class="info-group-title">食べるもの</div>
+              <ul class="info-list">
+                <li>ShackBurger</li>
+                <li>Fries</li>
+              </ul>
+            </div>
+            <div class="info-group">
+              <div class="info-group-title">特徴</div>
+              <ul class="info-list">
+                <li>NY発祥</li>
+                <li>日本にもあるので優先度は高くない</li>
+                <li>ただしNYで食べる意味はある</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" data-shop="Gray's Papaya">
+          <div class="card-header">
+            <span class="rank-badge a">A</span>
+            <h3 class="shop-name"><a class="shop-link" href="https://www.google.com/maps/dir/?api=1&amp;destination=Gray's%20Papaya%2C%20Upper%20West%20Side%2C%20New%20York&amp;travelmode=walking" target="_blank" rel="noopener noreferrer">Gray's Papaya<svg class="icon shop-map-icon"><use href="#icon-pin"></use></svg></a></h3>
+          <div class="card-actions"><button class="fav-btn fav-want" type="button" data-fav="want" aria-label="行きたい">☆</button><button class="fav-btn fav-done" type="button" data-fav="done" aria-label="行った">✓</button></div></div>
+          <div class="card-meta">
+            <span class="meta-item"><svg class="icon"><use href="#icon-pin"></use></svg>Upper West Side</span>
+            <span class="meta-item"><svg class="icon"><use href="#icon-dollar"></use></svg>約$5～10</span>
+            <span class="meta-item crowd-◎"><svg class="icon"><use href="#icon-users"></use></svg>混雑: ◎</span>
+          </div>
+          <div class="card-body">
+            <div class="info-group">
+              <div class="info-group-title">食べるもの</div>
+              <ul class="info-list">
+                <li>Hot dog</li>
+                <li>Papaya drink</li>
+              </ul>
+            </div>
+            <div class="info-group">
+              <div class="info-group-title">特徴</div>
+              <ul class="info-list">
+                <li>昔ながらのNYファストフード</li>
+                <li>安く短時間で食べられる</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6. イタリア系サンドイッチ -->
+    <div id="sec-6" class="section-block">
+      <h2 class="section-title">6. イタリア系サンドイッチ</h2>
+      <div class="cards-grid">
+        <div class="card" data-shop="Faicco's Italian Specialties">
+          <div class="card-header">
+            <span class="rank-badge a">A</span>
+            <h3 class="shop-name"><a class="shop-link" href="https://www.google.com/maps/dir/?api=1&amp;destination=Faicco's%20Italian%20Specialties%2C%20West%20Village%2C%20New%20York&amp;travelmode=walking" target="_blank" rel="noopener noreferrer">Faicco's Italian Specialties<svg class="icon shop-map-icon"><use href="#icon-pin"></use></svg></a></h3>
+          <div class="card-actions"><button class="fav-btn fav-want" type="button" data-fav="want" aria-label="行きたい">☆</button><button class="fav-btn fav-done" type="button" data-fav="done" aria-label="行った">✓</button></div></div>
+          <div class="card-meta">
+            <span class="meta-item"><svg class="icon"><use href="#icon-pin"></use></svg>West Village</span>
+            <span class="meta-item"><svg class="icon"><use href="#icon-dollar"></use></svg>約$20～30</span>
+            <span class="meta-item crowd-○"><svg class="icon"><use href="#icon-users"></use></svg>混雑: ○</span>
+          </div>
+          <div class="card-body">
+            <div class="info-group">
+              <div class="info-group-title">食べるもの</div>
+              <ul class="info-list">
+                <li>Italian Special</li>
+                <li>Chicken cutlet系</li>
+              </ul>
+            </div>
+            <div class="info-group">
+              <div class="info-group-title">特徴</div>
+              <ul class="info-list">
+                <li>1900年創業</li>
+                <li>巨大なItalian-American hero sandwich</li>
+                <li>1人だと量が多い可能性あり</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" data-shop="Alidoro">
+          <div class="card-header">
+            <span class="rank-badge a">A</span>
+            <h3 class="shop-name"><a class="shop-link" href="https://www.google.com/maps/dir/?api=1&amp;destination=Alidoro%2C%20Midtown%2C%20New%20York&amp;travelmode=walking" target="_blank" rel="noopener noreferrer">Alidoro<svg class="icon shop-map-icon"><use href="#icon-pin"></use></svg></a></h3>
+          <div class="card-actions"><button class="fav-btn fav-want" type="button" data-fav="want" aria-label="行きたい">☆</button><button class="fav-btn fav-done" type="button" data-fav="done" aria-label="行った">✓</button></div></div>
+          <div class="card-meta">
+            <span class="meta-item"><svg class="icon"><use href="#icon-pin"></use></svg>Midtown / Rockefeller Centerなど</span>
+            <span class="meta-item"><svg class="icon"><use href="#icon-dollar"></use></svg>約$15～25</span>
+            <span class="meta-item crowd-◎"><svg class="icon"><use href="#icon-users"></use></svg>混雑: ◎</span>
+          </div>
+          <div class="card-body">
+            <div class="info-group">
+              <div class="info-group-title">食べるもの</div>
+              <ul class="info-list">
+                <li>Italian sandwich</li>
+              </ul>
+            </div>
+            <div class="info-group">
+              <div class="info-group-title">特徴</div>
+              <ul class="info-list">
+                <li>NYのItalian sandwichを気軽に経験</li>
+                <li>Rockefeller Center店は行程に入れやすい</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" data-shop="Pisillo Italian Panini">
+          <div class="card-header">
+            <span class="rank-badge a">A</span>
+            <h3 class="shop-name"><a class="shop-link" href="https://www.google.com/maps/dir/?api=1&amp;destination=Pisillo%20Italian%20Panini%2C%20Times%20Square%2C%20New%20York&amp;travelmode=walking" target="_blank" rel="noopener noreferrer">Pisillo Italian Panini<svg class="icon shop-map-icon"><use href="#icon-pin"></use></svg></a></h3>
+          <div class="card-actions"><button class="fav-btn fav-want" type="button" data-fav="want" aria-label="行きたい">☆</button><button class="fav-btn fav-done" type="button" data-fav="done" aria-label="行った">✓</button></div></div>
+          <div class="card-meta">
+            <span class="meta-item"><svg class="icon"><use href="#icon-pin"></use></svg>Times Square / FiDi</span>
+            <span class="meta-item"><svg class="icon"><use href="#icon-dollar"></use></svg>約$15～25</span>
+            <span class="meta-item crowd-◎"><svg class="icon"><use href="#icon-users"></use></svg>混雑: ◎～○</span>
+          </div>
+          <div class="card-body">
+            <div class="info-group">
+              <div class="info-group-title">食べるもの</div>
+              <ul class="info-list">
+                <li>Prosciutto系panini</li>
+                <li>Italian cold cuts系</li>
+              </ul>
+            </div>
+            <div class="info-group">
+              <div class="info-group-title">特徴</div>
+              <ul class="info-list">
+                <li>非常に大きなpanini</li>
+                <li>昼食向き</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 7. タコス・メキシコ料理 -->
+    <div id="sec-7" class="section-block">
+      <h2 class="section-title">7. タコス・メキシコ料理</h2>
+      <div class="cards-grid">
+        <div class="card" data-shop="LOS TACOS No.1">
+          <div class="card-header">
+            <span class="rank-badge s">S</span>
+            <h3 class="shop-name"><a class="shop-link" href="https://www.google.com/maps/dir/?api=1&amp;destination=LOS%20TACOS%20No.1%2C%20Chelsea%20Market%2C%20New%20York&amp;travelmode=walking" target="_blank" rel="noopener noreferrer">LOS TACOS No.1<svg class="icon shop-map-icon"><use href="#icon-pin"></use></svg></a></h3>
+          <div class="card-actions"><button class="fav-btn fav-want" type="button" data-fav="want" aria-label="行きたい">☆</button><button class="fav-btn fav-done" type="button" data-fav="done" aria-label="行った">✓</button></div></div>
+          <div class="card-meta">
+            <span class="meta-item"><svg class="icon"><use href="#icon-pin"></use></svg>Chelsea Market / Times Square / NoHoなど</span>
+            <span class="meta-item"><svg class="icon"><use href="#icon-dollar"></use></svg>約$10～20</span>
+            <span class="meta-item crowd-○"><svg class="icon"><use href="#icon-users"></use></svg>混雑: ○</span>
+          </div>
+          <div class="card-body">
+            <div class="info-group">
+              <div class="info-group-title">食べるもの</div>
+              <ul class="info-list">
+                <li>Adobada taco</li>
+                <li>Carne asada taco</li>
+              </ul>
+            </div>
+            <div class="info-group">
+              <div class="info-group-title">特徴</div>
+              <ul class="info-list">
+                <li>現在のNYを代表するカジュアルフードの一つ</li>
+                <li>回転が速いので列があっても比較的利用しやすい</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" data-shop="Los Mariscos">
+          <div class="card-header">
+            <span class="rank-badge a">A</span>
+            <h3 class="shop-name"><a class="shop-link" href="https://www.google.com/maps/dir/?api=1&amp;destination=Los%20Mariscos%2C%20Chelsea%20Market%2C%20New%20York&amp;travelmode=walking" target="_blank" rel="noopener noreferrer">Los Mariscos<svg class="icon shop-map-icon"><use href="#icon-pin"></use></svg></a></h3>
+          <div class="card-actions"><button class="fav-btn fav-want" type="button" data-fav="want" aria-label="行きたい">☆</button><button class="fav-btn fav-done" type="button" data-fav="done" aria-label="行った">✓</button></div></div>
+          <div class="card-meta">
+            <span class="meta-item"><svg class="icon"><use href="#icon-pin"></use></svg>Chelsea Market</span>
+            <span class="meta-item"><svg class="icon"><use href="#icon-dollar"></use></svg>約$10～25</span>
+            <span class="meta-item crowd-◎"><svg class="icon"><use href="#icon-users"></use></svg>混雑: ◎～○</span>
+          </div>
+          <div class="card-body">
+            <div class="info-group">
+              <div class="info-group-title">食べるもの</div>
+              <ul class="info-list">
+                <li>Fish taco</li>
+                <li>Shrimp taco</li>
+                <li>Ceviche</li>
+              </ul>
+            </div>
+            <div class="info-group">
+              <div class="info-group-title">特徴</div>
+              <ul class="info-list">
+                <li>LOS TACOSの海鮮系姉妹店</li>
+                <li>Chelsea Marketではこちらもかなり良い</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 8. Chinatown / 中国料理 -->
+    <div id="sec-8" class="section-block">
+      <h2 class="section-title">8. Chinatown / 中国料理</h2>
+      <div class="cards-grid">
+        <div class="card" data-shop="Xi'an Famous Foods">
+          <div class="card-header">
+            <span class="rank-badge s">S</span>
+            <h3 class="shop-name"><a class="shop-link" href="https://www.google.com/maps/dir/?api=1&amp;destination=Xi%27an%20Famous%20Foods%2C%20Chelsea%2C%20New%20York&amp;travelmode=walking" target="_blank" rel="noopener noreferrer">Xi'an Famous Foods<svg class="icon shop-map-icon"><use href="#icon-pin"></use></svg></a></h3>
+          <div class="card-actions"><button class="fav-btn fav-want" type="button" data-fav="want" aria-label="行きたい">☆</button><button class="fav-btn fav-done" type="button" data-fav="done" aria-label="行った">✓</button></div></div>
+          <div class="card-meta">
+            <span class="meta-item"><svg class="icon"><use href="#icon-pin"></use></svg>Chelseaなど複数</span>
+            <span class="meta-item"><svg class="icon"><use href="#icon-dollar"></use></svg>約$10～20</span>
+            <span class="meta-item crowd-◎"><svg class="icon"><use href="#icon-users"></use></svg>混雑: ◎</span>
+          </div>
+          <div class="card-body">
+            <div class="info-group">
+              <div class="info-group-title">食べるもの</div>
+              <ul class="info-list">
+                <li>Spicy cumin lamb noodles</li>
+                <li>Hand-ripped noodles</li>
+              </ul>
+            </div>
+            <div class="info-group">
+              <div class="info-group-title">特徴</div>
+              <ul class="info-list">
+                <li>西安料理をNYのfast-casualにしたNY発チェーン</li>
+                <li>NYの移民食文化を低価格で体験できる</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" data-shop="Great NY Noodletown">
+          <div class="card-header">
+            <span class="rank-badge a">A</span>
+            <h3 class="shop-name"><a class="shop-link" href="https://www.google.com/maps/dir/?api=1&amp;destination=Great%20NY%20Noodletown%2C%20Chinatown%2C%20New%20York&amp;travelmode=walking" target="_blank" rel="noopener noreferrer">Great NY Noodletown<svg class="icon shop-map-icon"><use href="#icon-pin"></use></svg></a></h3>
+          <div class="card-actions"><button class="fav-btn fav-want" type="button" data-fav="want" aria-label="行きたい">☆</button><button class="fav-btn fav-done" type="button" data-fav="done" aria-label="行った">✓</button></div></div>
+          <div class="card-meta">
+            <span class="meta-item"><svg class="icon"><use href="#icon-pin"></use></svg>Chinatown</span>
+            <span class="meta-item"><svg class="icon"><use href="#icon-dollar"></use></svg>約$15～30</span>
+            <span class="meta-item crowd-◎"><svg class="icon"><use href="#icon-users"></use></svg>混雑: ◎～○</span>
+          </div>
+          <div class="card-body">
+            <div class="info-group">
+              <div class="info-group-title">食べるもの</div>
+              <ul class="info-list">
+                <li>Roast pork</li>
+                <li>Roast duck</li>
+                <li>Wonton noodles</li>
+              </ul>
+            </div>
+            <div class="info-group">
+              <div class="info-group-title">特徴</div>
+              <ul class="info-list">
+                <li>昔ながらのCantonese Chinatown</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" data-shop="Shu Jiao Fu Zhou">
+          <div class="card-header">
+            <span class="rank-badge a">A</span>
+            <h3 class="shop-name"><a class="shop-link" href="https://www.google.com/maps/dir/?api=1&amp;destination=Shu%20Jiao%20Fu%20Zhou%2C%20Chinatown%2C%20New%20York&amp;travelmode=walking" target="_blank" rel="noopener noreferrer">Shu Jiao Fu Zhou<svg class="icon shop-map-icon"><use href="#icon-pin"></use></svg></a></h3>
+          <div class="card-actions"><button class="fav-btn fav-want" type="button" data-fav="want" aria-label="行きたい">☆</button><button class="fav-btn fav-done" type="button" data-fav="done" aria-label="行った">✓</button></div></div>
+          <div class="card-meta">
+            <span class="meta-item"><svg class="icon"><use href="#icon-pin"></use></svg>Chinatown / Lower East Side</span>
+            <span class="meta-item"><svg class="icon"><use href="#icon-dollar"></use></svg>約$5～15</span>
+            <span class="meta-item crowd-◎"><svg class="icon"><use href="#icon-users"></use></svg>混雑: ◎</span>
+          </div>
+          <div class="card-body">
+            <div class="info-group">
+              <div class="info-group-title">食べるもの</div>
+              <ul class="info-list">
+                <li>Peanut noodles</li>
+                <li>Pork and chive dumplings</li>
+              </ul>
+            </div>
+            <div class="info-group">
+              <div class="info-group-title">特徴</div>
+              <ul class="info-list">
+                <li>非常に安い</li>
+                <li>福建系のローカル感が強い</li>
+                <li>華美ではない「本当のChinatown」寄り</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 9. 韓国料理 / Koreatown -->
+    <div id="sec-9" class="section-block">
+      <h2 class="section-title">9. 韓国料理 / Koreatown</h2>
+      <div class="cards-grid">
+        <div class="card" data-shop="Woorijip">
+          <div class="card-header">
+            <span class="rank-badge a">A</span>
+            <h3 class="shop-name"><a class="shop-link" href="https://www.google.com/maps/dir/?api=1&amp;destination=Woorijip%2C%20Koreatown%2C%20New%20York&amp;travelmode=walking" target="_blank" rel="noopener noreferrer">Woorijip<svg class="icon shop-map-icon"><use href="#icon-pin"></use></svg></a></h3>
+          <div class="card-actions"><button class="fav-btn fav-want" type="button" data-fav="want" aria-label="行きたい">☆</button><button class="fav-btn fav-done" type="button" data-fav="done" aria-label="行った">✓</button></div></div>
+          <div class="card-meta">
+            <span class="meta-item"><svg class="icon"><use href="#icon-pin"></use></svg>Koreatown</span>
+            <span class="meta-item"><svg class="icon"><use href="#icon-dollar"></use></svg>約$10～20</span>
+            <span class="meta-item crowd-◎"><svg class="icon"><use href="#icon-users"></use></svg>混雑: ◎</span>
+          </div>
+          <div class="card-body">
+            <div class="info-group">
+              <div class="info-group-title">食べるもの</div>
+              <ul class="info-list">
+                <li>Bibimbap</li>
+                <li>Kimbap</li>
+                <li>Korean fried chicken</li>
+                <li>各種惣菜</li>
+              </ul>
+            </div>
+            <div class="info-group">
+              <div class="info-group-title">特徴</div>
+              <ul class="info-list">
+                <li>セルフサービス中心</li>
+                <li>韓国系ニューヨーカーの日常感がある</li>
+                <li>一人旅と非常に相性が良い</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" data-shop="Food Gallery 32">
+          <div class="card-header">
+            <span class="rank-badge a">A</span>
+            <h3 class="shop-name"><a class="shop-link" href="https://www.google.com/maps/dir/?api=1&amp;destination=Food%20Gallery%2032%2C%20Koreatown%2C%20New%20York&amp;travelmode=walking" target="_blank" rel="noopener noreferrer">Food Gallery 32<svg class="icon shop-map-icon"><use href="#icon-pin"></use></svg></a></h3>
+          <div class="card-actions"><button class="fav-btn fav-want" type="button" data-fav="want" aria-label="行きたい">☆</button><button class="fav-btn fav-done" type="button" data-fav="done" aria-label="行った">✓</button></div></div>
+          <div class="card-meta">
+            <span class="meta-item"><svg class="icon"><use href="#icon-pin"></use></svg>Koreatown</span>
+            <span class="meta-item"><svg class="icon"><use href="#icon-dollar"></use></svg>約$10～20</span>
+            <span class="meta-item crowd-◎"><svg class="icon"><use href="#icon-users"></use></svg>混雑: ◎</span>
+          </div>
+          <div class="card-body">
+            <div class="info-group">
+              <div class="info-group-title">食べるもの</div>
+              <ul class="info-list">
+                <li>韓国料理各種</li>
+                <li>麺類</li>
+                <li>丼</li>
+                <li>スイーツ</li>
+              </ul>
+            </div>
+            <div class="info-group">
+              <div class="info-group-title">特徴</div>
+              <ul class="info-list">
+                <li>韓国系フードコート</li>
+                <li>選択肢が多い</li>
+                <li>予約不要</li>
+                <li>時間がない日の夕食にも使いやすい</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 10. インド / 南アジア / 中東 -->
+    <div id="sec-10" class="section-block">
+      <h2 class="section-title">10. インド / 南アジア / 中東</h2>
+      <div class="cards-grid">
+        <div class="card" data-shop="Punjabi Deli">
+          <div class="card-header">
+            <span class="rank-badge a">A</span>
+            <h3 class="shop-name"><a class="shop-link" href="https://www.google.com/maps/dir/?api=1&amp;destination=Punjabi%20Deli%2C%20East%20Village%2C%20New%20York&amp;travelmode=walking" target="_blank" rel="noopener noreferrer">Punjabi Deli<svg class="icon shop-map-icon"><use href="#icon-pin"></use></svg></a></h3>
+          <div class="card-actions"><button class="fav-btn fav-want" type="button" data-fav="want" aria-label="行きたい">☆</button><button class="fav-btn fav-done" type="button" data-fav="done" aria-label="行った">✓</button></div></div>
+          <div class="card-meta">
+            <span class="meta-item"><svg class="icon"><use href="#icon-pin"></use></svg>East Village</span>
+            <span class="meta-item"><svg class="icon"><use href="#icon-dollar"></use></svg>約$5～15</span>
+            <span class="meta-item crowd-◎"><svg class="icon"><use href="#icon-users"></use></svg>混雑: ◎</span>
+          </div>
+          <div class="card-body">
+            <div class="info-group">
+              <div class="info-group-title">食べるもの</div>
+              <ul class="info-list">
+                <li>Chana</li>
+                <li>Dal</li>
+                <li>Samosa</li>
+                <li>各種vegetarian curry</li>
+              </ul>
+            </div>
+            <div class="info-group">
+              <div class="info-group-title">特徴</div>
+              <ul class="info-list">
+                <li>タクシードライバーなどにも支持される超カジュアル店</li>
+                <li>NYの移民都市感を味わうには非常に面白い</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" data-shop="Mamoun's Falafel">
+          <div class="card-header">
+            <span class="rank-badge a">A</span>
+            <h3 class="shop-name"><a class="shop-link" href="https://www.google.com/maps/dir/?api=1&amp;destination=Mamoun's%20Falafel%2C%20Greenwich%20Village%2C%20New%20York&amp;travelmode=walking" target="_blank" rel="noopener noreferrer">Mamoun's Falafel<svg class="icon shop-map-icon"><use href="#icon-pin"></use></svg></a></h3>
+          <div class="card-actions"><button class="fav-btn fav-want" type="button" data-fav="want" aria-label="行きたい">☆</button><button class="fav-btn fav-done" type="button" data-fav="done" aria-label="行った">✓</button></div></div>
+          <div class="card-meta">
+            <span class="meta-item"><svg class="icon"><use href="#icon-pin"></use></svg>Greenwich Village</span>
+            <span class="meta-item"><svg class="icon"><use href="#icon-dollar"></use></svg>約$10～20</span>
+            <span class="meta-item crowd-◎"><svg class="icon"><use href="#icon-users"></use></svg>混雑: ◎～○</span>
+          </div>
+          <div class="card-body">
+            <div class="info-group">
+              <div class="info-group-title">食べるもの</div>
+              <ul class="info-list">
+                <li>Falafel sandwich</li>
+                <li>Shawarma</li>
+              </ul>
+            </div>
+            <div class="info-group">
+              <div class="info-group-title">特徴</div>
+              <ul class="info-list">
+                <li>1971年創業</li>
+                <li>Villageの定番cheap eat</li>
+                <li>Village Vanguard前後にも使いやすい</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 11. その他の移民系NY料理 -->
+    <div id="sec-11" class="section-block">
+      <h2 class="section-title">11. その他の移民系NY料理</h2>
+      <div class="cards-grid">
+        <div class="card" data-shop="Veselka">
+          <div class="card-header">
+            <span class="rank-badge a">A</span>
+            <h3 class="shop-name"><a class="shop-link" href="https://www.google.com/maps/dir/?api=1&amp;destination=Veselka%2C%20East%20Village%2C%20New%20York&amp;travelmode=walking" target="_blank" rel="noopener noreferrer">Veselka<svg class="icon shop-map-icon"><use href="#icon-pin"></use></svg></a></h3>
+          <div class="card-actions"><button class="fav-btn fav-want" type="button" data-fav="want" aria-label="行きたい">☆</button><button class="fav-btn fav-done" type="button" data-fav="done" aria-label="行った">✓</button></div></div>
+          <div class="card-meta">
+            <span class="meta-item"><svg class="icon"><use href="#icon-pin"></use></svg>East Village</span>
+            <span class="meta-item"><svg class="icon"><use href="#icon-tag"></use></svg>Ukrainian</span>
+            <span class="meta-item"><svg class="icon"><use href="#icon-dollar"></use></svg>約$20～30</span>
+            <span class="meta-item crowd-○"><svg class="icon"><use href="#icon-users"></use></svg>混雑: ○</span>
+          </div>
+          <div class="card-body">
+            <div class="info-group">
+              <div class="info-group-title">食べるもの</div>
+              <ul class="info-list">
+                <li>Pierogi</li>
+                <li>Borscht</li>
+                <li>Potato pancakes</li>
+              </ul>
+            </div>
+            <div class="info-group">
+              <div class="info-group-title">特徴</div>
+              <ul class="info-list">
+                <li>1954年創業</li>
+                <li>East Villageを代表する老舗</li>
+                <li>NYの東欧移民文化を経験できる</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" data-shop="Margon">
+          <div class="card-header">
+            <span class="rank-badge s">S</span>
+            <h3 class="shop-name"><a class="shop-link" href="https://www.google.com/maps/dir/?api=1&amp;destination=Margon%2C%20Times%20Square%2C%20New%20York&amp;travelmode=walking" target="_blank" rel="noopener noreferrer">Margon<svg class="icon shop-map-icon"><use href="#icon-pin"></use></svg></a></h3>
+          <div class="card-actions"><button class="fav-btn fav-want" type="button" data-fav="want" aria-label="行きたい">☆</button><button class="fav-btn fav-done" type="button" data-fav="done" aria-label="行った">✓</button></div></div>
+          <div class="card-meta">
+            <span class="meta-item"><svg class="icon"><use href="#icon-pin"></use></svg>Times Square</span>
+            <span class="meta-item"><svg class="icon"><use href="#icon-tag"></use></svg>Cuban / Dominican</span>
+            <span class="meta-item"><svg class="icon"><use href="#icon-dollar"></use></svg>約$10～20</span>
+            <span class="meta-item crowd-◎"><svg class="icon"><use href="#icon-users"></use></svg>混雑: ◎</span>
+          </div>
+          <div class="card-body">
+            <div class="info-group">
+              <div class="info-group-title">食べるもの</div>
+              <ul class="info-list">
+                <li>Cuban sandwich</li>
+                <li>Roast pork</li>
+                <li>Rice + black beans</li>
+              </ul>
+            </div>
+            <div class="info-group">
+              <div class="info-group-title">特徴</div>
+              <ul class="info-list">
+                <li>約60年続く昔ながらのcounter restaurant</li>
+                <li>Times Squareなのに観光客向けチェーン感が薄い</li>
+                <li>今回かなり相性が良い</li>
+                <li>昼営業中心なので注意</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 12. スイーツ / NY名物 -->
+    <div id="sec-12" class="section-block">
+      <h2 class="section-title">12. スイーツ / NY名物</h2>
+      <div class="cards-grid">
+        <div class="card" data-shop="Levain Bakery">
+          <div class="card-header">
+            <span class="rank-badge s">S</span>
+            <h3 class="shop-name"><a class="shop-link" href="https://www.google.com/maps/dir/?api=1&amp;destination=Levain%20Bakery%2C%20New%20York&amp;travelmode=walking" target="_blank" rel="noopener noreferrer">Levain Bakery<svg class="icon shop-map-icon"><use href="#icon-pin"></use></svg></a></h3>
+          <div class="card-actions"><button class="fav-btn fav-want" type="button" data-fav="want" aria-label="行きたい">☆</button><button class="fav-btn fav-done" type="button" data-fav="done" aria-label="行った">✓</button></div></div>
+          <div class="card-meta">
+            <span class="meta-item"><svg class="icon"><use href="#icon-pin"></use></svg>複数</span>
+            <span class="meta-item"><svg class="icon"><use href="#icon-dollar"></use></svg>約$5～10</span>
+            <span class="meta-item crowd-○"><svg class="icon"><use href="#icon-users"></use></svg>混雑: ○</span>
+          </div>
+          <div class="card-body">
+            <div class="info-group">
+              <div class="info-group-title">食べるもの</div>
+              <ul class="info-list">
+                <li>Chocolate Chip Walnut Cookie</li>
+              </ul>
+            </div>
+            <div class="info-group">
+              <div class="info-group-title">特徴</div>
+              <ul class="info-list">
+                <li>巨大で分厚いNY cookie</li>
+                <li>1個を一度経験すれば十分</li>
+                <li>店舗が多く利用しやすい</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" data-shop="Magnolia Bakery">
+          <div class="card-header">
+            <span class="rank-badge s">S</span>
+            <h3 class="shop-name"><a class="shop-link" href="https://www.google.com/maps/dir/?api=1&amp;destination=Magnolia%20Bakery%2C%20West%20Village%2C%20New%20York&amp;travelmode=walking" target="_blank" rel="noopener noreferrer">Magnolia Bakery<svg class="icon shop-map-icon"><use href="#icon-pin"></use></svg></a></h3>
+          <div class="card-actions"><button class="fav-btn fav-want" type="button" data-fav="want" aria-label="行きたい">☆</button><button class="fav-btn fav-done" type="button" data-fav="done" aria-label="行った">✓</button></div></div>
+          <div class="card-meta">
+            <span class="meta-item"><svg class="icon"><use href="#icon-pin"></use></svg>West Village / Rockefeller Center / Grand Centralほか</span>
+            <span class="meta-item"><svg class="icon"><use href="#icon-dollar"></use></svg>約$5～10</span>
+            <span class="meta-item crowd-○"><svg class="icon"><use href="#icon-users"></use></svg>混雑: ○</span>
+          </div>
+          <div class="card-body">
+            <div class="info-group">
+              <div class="info-group-title">食べるもの</div>
+              <ul class="info-list">
+                <li>Banana Pudding</li>
+              </ul>
+            </div>
+            <div class="info-group">
+              <div class="info-group-title">特徴</div>
+              <ul class="info-list">
+                <li>Cupcakeよりbanana puddingを優先</li>
+                <li>店舗多数なので本店にこだわらない</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" data-shop="Eileen's Special Cheesecake">
+          <div class="card-header">
+            <span class="rank-badge a">A</span>
+            <h3 class="shop-name"><a class="shop-link" href="https://www.google.com/maps/dir/?api=1&amp;destination=Eileen's%20Special%20Cheesecake%2C%20SoHo%2C%20New%20York&amp;travelmode=walking" target="_blank" rel="noopener noreferrer">Eileen's Special Cheesecake<svg class="icon shop-map-icon"><use href="#icon-pin"></use></svg></a></h3>
+          <div class="card-actions"><button class="fav-btn fav-want" type="button" data-fav="want" aria-label="行きたい">☆</button><button class="fav-btn fav-done" type="button" data-fav="done" aria-label="行った">✓</button></div></div>
+          <div class="card-meta">
+            <span class="meta-item"><svg class="icon"><use href="#icon-pin"></use></svg>SoHo / Nolita</span>
+            <span class="meta-item"><svg class="icon"><use href="#icon-dollar"></use></svg>約$5～10</span>
+            <span class="meta-item crowd-◎"><svg class="icon"><use href="#icon-users"></use></svg>混雑: ◎</span>
+          </div>
+          <div class="card-body">
+            <div class="info-group">
+              <div class="info-group-title">食べるもの</div>
+              <ul class="info-list">
+                <li>New York cheesecake</li>
+              </ul>
+            </div>
+            <div class="info-group">
+              <div class="info-group-title">特徴</div>
+              <ul class="info-list">
+                <li>NY cheesecakeを気軽に食べるなら有力</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" data-shop="Junior's Restaurant &amp; Bakery">
+          <div class="card-header">
+            <span class="rank-badge a">A</span>
+            <h3 class="shop-name"><a class="shop-link" href="https://www.google.com/maps/dir/?api=1&amp;destination=Junior's%20Restaurant%20%26%20Bakery%2C%20Times%20Square%2C%20New%20York&amp;travelmode=walking" target="_blank" rel="noopener noreferrer">Junior's Restaurant & Bakery<svg class="icon shop-map-icon"><use href="#icon-pin"></use></svg></a></h3>
+          <div class="card-actions"><button class="fav-btn fav-want" type="button" data-fav="want" aria-label="行きたい">☆</button><button class="fav-btn fav-done" type="button" data-fav="done" aria-label="行った">✓</button></div></div>
+          <div class="card-meta">
+            <span class="meta-item"><svg class="icon"><use href="#icon-pin"></use></svg>Times Square</span>
+            <span class="meta-item"><svg class="icon"><use href="#icon-dollar"></use></svg>約$10～15</span>
+            <span class="meta-item crowd-○"><svg class="icon"><use href="#icon-users"></use></svg>混雑: ○</span>
+          </div>
+          <div class="card-body">
+            <div class="info-group">
+              <div class="info-group-title">食べるもの</div>
+              <ul class="info-list">
+                <li>Original New York cheesecake</li>
+              </ul>
+            </div>
+            <div class="info-group">
+              <div class="info-group-title">特徴</div>
+              <ul class="info-list">
+                <li>非常に有名</li>
+                <li>観光客も多い</li>
+                <li>味＋「NY名物を食べた」経験向け</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" data-shop="Chinatown Ice Cream Factory">
+          <div class="card-header">
+            <span class="rank-badge a">A</span>
+            <h3 class="shop-name"><a class="shop-link" href="https://www.google.com/maps/dir/?api=1&amp;destination=Chinatown%20Ice%20Cream%20Factory%2C%20Chinatown%2C%20New%20York&amp;travelmode=walking" target="_blank" rel="noopener noreferrer">Chinatown Ice Cream Factory<svg class="icon shop-map-icon"><use href="#icon-pin"></use></svg></a></h3>
+          <div class="card-actions"><button class="fav-btn fav-want" type="button" data-fav="want" aria-label="行きたい">☆</button><button class="fav-btn fav-done" type="button" data-fav="done" aria-label="行った">✓</button></div></div>
+          <div class="card-meta">
+            <span class="meta-item"><svg class="icon"><use href="#icon-pin"></use></svg>Chinatown</span>
+            <span class="meta-item"><svg class="icon"><use href="#icon-dollar"></use></svg>約$5～10</span>
+            <span class="meta-item crowd-◎"><svg class="icon"><use href="#icon-users"></use></svg>混雑: ◎～○</span>
+          </div>
+          <div class="card-body">
+            <div class="info-group">
+              <div class="info-group-title">食べるもの</div>
+              <ul class="info-list">
+                <li>Black sesame</li>
+                <li>Lychee</li>
+                <li>Pandan</li>
+              </ul>
+            </div>
+            <div class="info-group">
+              <div class="info-group-title">特徴</div>
+              <ul class="info-list">
+                <li>アジア系フレーバーがNY Chinatownらしい</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" data-shop="Il Laboratorio del Gelato">
+          <div class="card-header">
+            <span class="rank-badge a">A</span>
+            <h3 class="shop-name"><a class="shop-link" href="https://www.google.com/maps/dir/?api=1&amp;destination=Il%20Laboratorio%20del%20Gelato%2C%20Lower%20East%20Side%2C%20New%20York&amp;travelmode=walking" target="_blank" rel="noopener noreferrer">Il Laboratorio del Gelato<svg class="icon shop-map-icon"><use href="#icon-pin"></use></svg></a></h3>
+          <div class="card-actions"><button class="fav-btn fav-want" type="button" data-fav="want" aria-label="行きたい">☆</button><button class="fav-btn fav-done" type="button" data-fav="done" aria-label="行った">✓</button></div></div>
+          <div class="card-meta">
+            <span class="meta-item"><svg class="icon"><use href="#icon-pin"></use></svg>Lower East Side</span>
+            <span class="meta-item"><svg class="icon"><use href="#icon-dollar"></use></svg>約$5～10</span>
+            <span class="meta-item crowd-◎"><svg class="icon"><use href="#icon-users"></use></svg>混雑: ◎</span>
+          </div>
+          <div class="card-body">
+            <div class="info-group">
+              <div class="info-group-title">食べるもの</div>
+              <ul class="info-list">
+                <li>Gelato</li>
+              </ul>
+            </div>
+            <div class="info-group">
+              <div class="info-group-title">特徴</div>
+              <ul class="info-list">
+                <li>暑い時期のLES散策休憩に良い</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" data-shop="Breads Bakery">
+          <div class="card-header">
+            <span class="rank-badge a">A</span>
+            <h3 class="shop-name"><a class="shop-link" href="https://www.google.com/maps/dir/?api=1&amp;destination=Breads%20Bakery%2C%20Rockefeller%20Center%2C%20New%20York&amp;travelmode=walking" target="_blank" rel="noopener noreferrer">Breads Bakery<svg class="icon shop-map-icon"><use href="#icon-pin"></use></svg></a></h3>
+          <div class="card-actions"><button class="fav-btn fav-want" type="button" data-fav="want" aria-label="行きたい">☆</button><button class="fav-btn fav-done" type="button" data-fav="done" aria-label="行った">✓</button></div></div>
+          <div class="card-meta">
+            <span class="meta-item"><svg class="icon"><use href="#icon-pin"></use></svg>Rockefeller Center / Union Squareなど</span>
+            <span class="meta-item"><svg class="icon"><use href="#icon-dollar"></use></svg>約$5～15</span>
+            <span class="meta-item crowd-◎"><svg class="icon"><use href="#icon-users"></use></svg>混雑: ◎～○</span>
+          </div>
+          <div class="card-body">
+            <div class="info-group">
+              <div class="info-group-title">食べるもの</div>
+              <ul class="info-list">
+                <li>Chocolate babka</li>
+              </ul>
+            </div>
+            <div class="info-group">
+              <div class="info-group-title">特徴</div>
+              <ul class="info-list">
+                <li>BabkaはNY Jewish food文化を感じる菓子</li>
+                <li>パンやコーヒーも使いやすい</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" data-shop="Orwashers Bakery">
+          <div class="card-header">
+            <span class="rank-badge a">A</span>
+            <h3 class="shop-name"><a class="shop-link" href="https://www.google.com/maps/dir/?api=1&amp;destination=Orwashers%20Bakery%2C%20Upper%20East%20Side%2C%20New%20York&amp;travelmode=walking" target="_blank" rel="noopener noreferrer">Orwashers Bakery<svg class="icon shop-map-icon"><use href="#icon-pin"></use></svg></a></h3>
+          <div class="card-actions"><button class="fav-btn fav-want" type="button" data-fav="want" aria-label="行きたい">☆</button><button class="fav-btn fav-done" type="button" data-fav="done" aria-label="行った">✓</button></div></div>
+          <div class="card-meta">
+            <span class="meta-item"><svg class="icon"><use href="#icon-pin"></use></svg>Upper East Side</span>
+            <span class="meta-item"><svg class="icon"><use href="#icon-dollar"></use></svg>約$5～15</span>
+            <span class="meta-item crowd-◎"><svg class="icon"><use href="#icon-users"></use></svg>混雑: ◎</span>
+          </div>
+          <div class="card-body">
+            <div class="info-group">
+              <div class="info-group-title">食べるもの</div>
+              <ul class="info-list">
+                <li>Black-and-white cookie</li>
+                <li>Rugelach</li>
+                <li>Doughnut</li>
+              </ul>
+            </div>
+            <div class="info-group">
+              <div class="info-group-title">特徴</div>
+              <ul class="info-list">
+                <li>1916年創業</li>
+                <li>Met / Guggenheim方面と相性が良い</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 13. NYらしい追加の食べ物 -->
+    <div id="sec-13" class="section-block">
+      <h2 class="section-title">13. NYらしい追加の食べ物</h2>
+      <div class="cards-grid">
+        <div class="card" data-shop="Black-and-white cookie">
+          <div class="card-header">
+            <span class="rank-badge a">A</span>
+            <h3 class="shop-name">Black-and-white cookie</h3>
+          <div class="card-actions"><button class="fav-btn fav-want" type="button" data-fav="want" aria-label="行きたい">☆</button><button class="fav-btn fav-done" type="button" data-fav="done" aria-label="行った">✓</button></div></div>
+          <div class="card-body">
+            <div class="info-group">
+              <div class="info-group-title">候補</div>
+              <ul class="info-list">
+                <li>Orwashersなど</li>
+              </ul>
+            </div>
+            <div class="info-group">
+              <div class="info-group-title">特徴</div>
+              <ul class="info-list">
+                <li>NYの伝統的cookie</li>
+                <li>見かけたら1枚試す程度でOK</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" data-shop="Egg Cream">
+          <div class="card-header">
+            <span class="rank-badge a">A</span>
+            <h3 class="shop-name">Egg Cream</h3>
+          <div class="card-actions"><button class="fav-btn fav-want" type="button" data-fav="want" aria-label="行きたい">☆</button><button class="fav-btn fav-done" type="button" data-fav="done" aria-label="行った">✓</button></div></div>
+          <div class="card-body">
+            <div class="info-group">
+              <div class="info-group-title">候補</div>
+              <ul class="info-list">
+                <li>S&P Lunchなど</li>
+              </ul>
+            </div>
+            <div class="info-group">
+              <div class="info-group-title">特徴</div>
+              <ul class="info-list">
+                <li>名前に反して卵は入らない</li>
+                <li>milk + chocolate syrup + soda water</li>
+                <li>昔ながらのNY飲料</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" data-shop="Knish">
+          <div class="card-header">
+            <span class="rank-badge a">A</span>
+            <h3 class="shop-name">Knish</h3>
+          <div class="card-actions"><button class="fav-btn fav-want" type="button" data-fav="want" aria-label="行きたい">☆</button><button class="fav-btn fav-done" type="button" data-fav="done" aria-label="行った">✓</button></div></div>
+          <div class="card-body">
+            <div class="info-group">
+              <div class="info-group-title">候補</div>
+              <ul class="info-list">
+                <li>Yonah Schimmel's</li>
+              </ul>
+            </div>
+            <div class="info-group">
+              <div class="info-group-title">特徴</div>
+              <ul class="info-list">
+                <li>じゃがいもなどを生地で包むJewish / Eastern European系軽食</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" data-shop="Pretzel">
+          <div class="card-header">
+            <span class="rank-badge b">B</span>
+            <h3 class="shop-name">Pretzel</h3>
+          <div class="card-actions"><button class="fav-btn fav-want" type="button" data-fav="want" aria-label="行きたい">☆</button><button class="fav-btn fav-done" type="button" data-fav="done" aria-label="行った">✓</button></div></div>
+          <div class="card-body">
+            <div class="info-group">
+              <div class="info-group-title">候補</div>
+              <ul class="info-list">
+                <li>street cart</li>
+              </ul>
+            </div>
+            <div class="info-group">
+              <div class="info-group-title">特徴</div>
+              <ul class="info-list">
+                <li>NY観光イメージの一つ</li>
+                <li>味を目的に探す必要はない</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" data-shop="Halal cart">
+          <div class="card-header">
+            <span class="rank-badge b">B</span>
+            <h3 class="shop-name">Halal cart</h3>
+          <div class="card-actions"><button class="fav-btn fav-want" type="button" data-fav="want" aria-label="行きたい">☆</button><button class="fav-btn fav-done" type="button" data-fav="done" aria-label="行った">✓</button></div></div>
+          <div class="card-body">
+            <div class="info-group">
+              <div class="info-group-title">候補</div>
+              <ul class="info-list">
+                <li>街中の混んでいるcart</li>
+              </ul>
+            </div>
+            <div class="info-group">
+              <div class="info-group-title">食べるもの</div>
+              <ul class="info-list">
+                <li>Chicken over rice</li>
+                <li>Lamb over rice</li>
+              </ul>
+            </div>
+            <div class="info-group">
+              <div class="info-group-title">特徴</div>
+              <ul class="info-list">
+                <li>NYの日常的street food</li>
+                <li>Adel'sのような超長時間行列店を狙う必要なし</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 14. Food Hall / Market -->
+    <div id="sec-14" class="section-block">
+      <h2 class="section-title">14. Food Hall / Market</h2>
+      <div class="cards-grid">
+        <div class="card" data-shop="Chelsea Market">
+          <div class="card-header">
+            <span class="rank-badge s">S</span>
+            <h3 class="shop-name"><a class="shop-link" href="https://www.google.com/maps/dir/?api=1&amp;destination=Chelsea%20Market%2C%20New%20York&amp;travelmode=walking" target="_blank" rel="noopener noreferrer">Chelsea Market<svg class="icon shop-map-icon"><use href="#icon-pin"></use></svg></a></h3>
+          <div class="card-actions"><button class="fav-btn fav-want" type="button" data-fav="want" aria-label="行きたい">☆</button><button class="fav-btn fav-done" type="button" data-fav="done" aria-label="行った">✓</button></div></div>
+          <div class="card-meta">
+            <span class="meta-item"><svg class="icon"><use href="#icon-pin"></use></svg>Chelsea / Meatpacking</span>
+          </div>
+          <div class="card-body">
+            <div class="info-group">
+              <div class="info-group-title">おすすめ</div>
+              <ul class="info-list">
+                <li>LOS TACOS No.1</li>
+                <li>Los Mariscos</li>
+                <li>軽食</li>
+              </ul>
+            </div>
+            <div class="info-group">
+              <div class="info-group-title">特徴</div>
+              <ul class="info-list">
+                <li>観光客は多い</li>
+                <li>High Line / Whitney / Meatpackingと組み合わせやすい</li>
+                <li>食事目的だけで特別に移動する必要はない</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" data-shop="Market 57">
+          <div class="card-header">
+            <span class="rank-badge a">A</span>
+            <h3 class="shop-name"><a class="shop-link" href="https://www.google.com/maps/dir/?api=1&amp;destination=Market%2057%2C%20Pier%2057%2C%20New%20York&amp;travelmode=walking" target="_blank" rel="noopener noreferrer">Market 57<svg class="icon shop-map-icon"><use href="#icon-pin"></use></svg></a></h3>
+          <div class="card-actions"><button class="fav-btn fav-want" type="button" data-fav="want" aria-label="行きたい">☆</button><button class="fav-btn fav-done" type="button" data-fav="done" aria-label="行った">✓</button></div></div>
+          <div class="card-meta">
+            <span class="meta-item"><svg class="icon"><use href="#icon-pin"></use></svg>Pier 57 / Hudson River Park</span>
+          </div>
+          <div class="card-body">
+            <div class="info-group">
+              <div class="info-group-title">特徴</div>
+              <ul class="info-list">
+                <li>James Beard Foundationが関わるfood hall</li>
+                <li>Chelsea Marketより新しい</li>
+                <li>Whitney～High Line方面の休憩候補</li>
+                <li>多国籍料理</li>
+                <li>Harlem Hopsのbeerなどもある</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" data-shop="Essex Market">
+          <div class="card-header">
+            <span class="rank-badge a">A</span>
+            <h3 class="shop-name"><a class="shop-link" href="https://www.google.com/maps/dir/?api=1&amp;destination=Essex%20Market%2C%20Lower%20East%20Side%2C%20New%20York&amp;travelmode=walking" target="_blank" rel="noopener noreferrer">Essex Market<svg class="icon shop-map-icon"><use href="#icon-pin"></use></svg></a></h3>
+          <div class="card-actions"><button class="fav-btn fav-want" type="button" data-fav="want" aria-label="行きたい">☆</button><button class="fav-btn fav-done" type="button" data-fav="done" aria-label="行った">✓</button></div></div>
+          <div class="card-meta">
+            <span class="meta-item"><svg class="icon"><use href="#icon-pin"></use></svg>Lower East Side</span>
+          </div>
+          <div class="card-body">
+            <div class="info-group">
+              <div class="info-group-title">特徴</div>
+              <ul class="info-list">
+                <li>Chelsea Marketより地元市場的</li>
+                <li>LES散策と相性が良い</li>
+                <li>観光地化したfood hallよりローカル感を優先する場合に良い</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" data-shop="The Hugh">
+          <div class="card-header">
+            <span class="rank-badge b">B</span>
+            <h3 class="shop-name"><a class="shop-link" href="https://www.google.com/maps/dir/?api=1&amp;destination=The%20Hugh%2C%20Midtown%20East%2C%20New%20York&amp;travelmode=walking" target="_blank" rel="noopener noreferrer">The Hugh<svg class="icon shop-map-icon"><use href="#icon-pin"></use></svg></a></h3>
+          <div class="card-actions"><button class="fav-btn fav-want" type="button" data-fav="want" aria-label="行きたい">☆</button><button class="fav-btn fav-done" type="button" data-fav="done" aria-label="行った">✓</button></div></div>
+          <div class="card-meta">
+            <span class="meta-item"><svg class="icon"><use href="#icon-pin"></use></svg>Midtown East</span>
+          </div>
+          <div class="card-body">
+            <div class="info-group">
+              <div class="info-group-title">特徴</div>
+              <ul class="info-list">
+                <li>Midtownのfood hall</li>
+                <li>観光目的で行く場所ではない</li>
+                <li>近くで昼食に困った場合の便利な選択肢</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 15. クラフトビール / NYのバー -->
+    <div id="sec-15" class="section-block">
+      <h2 class="section-title">15. クラフトビール / NYのバー</h2>
+      <div class="cards-grid">
+        <div class="card" data-shop="Other Half Brewing - Rockefeller Center Taproom">
+          <div class="card-header">
+            <span class="rank-badge s">S</span>
+            <h3 class="shop-name"><a class="shop-link" href="https://www.google.com/maps/dir/?api=1&amp;destination=Other%20Half%20Brewing%20Rockefeller%20Center%20Taproom%2C%20New%20York&amp;travelmode=walking" target="_blank" rel="noopener noreferrer">Other Half Brewing - Rockefeller Center Taproom<svg class="icon shop-map-icon"><use href="#icon-pin"></use></svg></a></h3>
+          <div class="card-actions"><button class="fav-btn fav-want" type="button" data-fav="want" aria-label="行きたい">☆</button><button class="fav-btn fav-done" type="button" data-fav="done" aria-label="行った">✓</button></div></div>
+          <div class="card-meta">
+            <span class="meta-item"><svg class="icon"><use href="#icon-pin"></use></svg>Rockefeller Center</span>
+            <span class="meta-item"><svg class="icon"><use href="#icon-dollar"></use></svg>約$10～20/杯＋軽食</span>
+            <span class="meta-item crowd-◎"><svg class="icon"><use href="#icon-users"></use></svg>混雑: ◎～○</span>
+          </div>
+          <div class="card-body">
+            <div class="info-group">
+              <div class="info-group-title">飲むもの</div>
+              <ul class="info-list">
+                <li>Hazy IPA</li>
+                <li>IPA</li>
+                <li>Lager</li>
+              </ul>
+            </div>
+            <div class="info-group">
+              <div class="info-group-title">特徴</div>
+              <ul class="info-list">
+                <li>Brooklyn発の有力craft brewery</li>
+                <li>Top of the Rock前後に非常に使いやすい</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" data-shop="Blind Tiger Ale House">
+          <div class="card-header">
+            <span class="rank-badge s">S</span>
+            <h3 class="shop-name"><a class="shop-link" href="https://www.google.com/maps/dir/?api=1&amp;destination=Blind%20Tiger%20Ale%20House%2C%20West%20Village%2C%20New%20York&amp;travelmode=walking" target="_blank" rel="noopener noreferrer">Blind Tiger Ale House<svg class="icon shop-map-icon"><use href="#icon-pin"></use></svg></a></h3>
+          <div class="card-actions"><button class="fav-btn fav-want" type="button" data-fav="want" aria-label="行きたい">☆</button><button class="fav-btn fav-done" type="button" data-fav="done" aria-label="行った">✓</button></div></div>
+          <div class="card-meta">
+            <span class="meta-item"><svg class="icon"><use href="#icon-pin"></use></svg>West Village</span>
+            <span class="meta-item"><svg class="icon"><use href="#icon-dollar"></use></svg>約$10～20/杯</span>
+            <span class="meta-item crowd-○"><svg class="icon"><use href="#icon-users"></use></svg>混雑: ○</span>
+          </div>
+          <div class="card-body">
+            <div class="info-group">
+              <div class="info-group-title">飲むもの</div>
+              <ul class="info-list">
+                <li>その日のNY craft beer</li>
+              </ul>
+            </div>
+            <div class="info-group">
+              <div class="info-group-title">特徴</div>
+              <ul class="info-list">
+                <li>28 rotating drafts</li>
+                <li>West Villageの老舗beer bar</li>
+                <li>Village Vanguard前後と相性が良い</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" data-shop="McSorley's Old Ale House">
+          <div class="card-header">
+            <span class="rank-badge a">A</span>
+            <h3 class="shop-name"><a class="shop-link" href="https://www.google.com/maps/dir/?api=1&amp;destination=McSorley's%20Old%20Ale%20House%2C%20East%20Village%2C%20New%20York&amp;travelmode=walking" target="_blank" rel="noopener noreferrer">McSorley's Old Ale House<svg class="icon shop-map-icon"><use href="#icon-pin"></use></svg></a></h3>
+          <div class="card-actions"><button class="fav-btn fav-want" type="button" data-fav="want" aria-label="行きたい">☆</button><button class="fav-btn fav-done" type="button" data-fav="done" aria-label="行った">✓</button></div></div>
+          <div class="card-meta">
+            <span class="meta-item"><svg class="icon"><use href="#icon-pin"></use></svg>East Village</span>
+            <span class="meta-item"><svg class="icon"><use href="#icon-dollar"></use></svg>低～中</span>
+            <span class="meta-item crowd-○"><svg class="icon"><use href="#icon-users"></use></svg>混雑: ○</span>
+          </div>
+          <div class="card-body">
+            <div class="info-group">
+              <div class="info-group-title">飲むもの</div>
+              <ul class="info-list">
+                <li>Light Ale / Dark Ale</li>
+              </ul>
+            </div>
+            <div class="info-group">
+              <div class="info-group-title">特徴</div>
+              <ul class="info-list">
+                <li>1854年創業</li>
+                <li>NY最古級のsaloon</li>
+                <li>歴史体験として面白い</li>
+              </ul>
+            </div>
+            <div class="info-group">
+              <div class="info-group-title" style="color: #dc2626;">注意</div>
+              <ul class="info-list" style="color: #dc2626;">
+                <li>Cash Only</li>
+                <li>予約なし、first come first served</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 16. カフェ・コーヒー -->
+    <div id="sec-16" class="section-block">
+      <h2 class="section-title">16. カフェ・コーヒー</h2>
+      <div class="section-note">
+        ※カフェは「目的地」にせず、近くを通ったら入る方式を推奨。
+      </div>
+      <div class="cards-grid">
+        <div class="card" data-shop="La Cabra">
+          <div class="card-header">
+            <span class="rank-badge s">S</span>
+            <h3 class="shop-name"><a class="shop-link" href="https://www.google.com/maps/dir/?api=1&amp;destination=La%20Cabra%2C%20SoHo%2C%20New%20York&amp;travelmode=walking" target="_blank" rel="noopener noreferrer">La Cabra<svg class="icon shop-map-icon"><use href="#icon-pin"></use></svg></a></h3>
+          <div class="card-actions"><button class="fav-btn fav-want" type="button" data-fav="want" aria-label="行きたい">☆</button><button class="fav-btn fav-done" type="button" data-fav="done" aria-label="行った">✓</button></div></div>
+          <div class="card-meta">
+            <span class="meta-item"><svg class="icon"><use href="#icon-pin"></use></svg>SoHo / East Village</span>
+            <span class="meta-item"><svg class="icon"><use href="#icon-tag"></use></svg>Nordic specialty coffee</span>
+            <span class="meta-item"><svg class="icon"><use href="#icon-dollar"></use></svg>約$5～15</span>
+          </div>
+          <div class="card-body">
+            <div class="info-group">
+              <div class="info-group-title">おすすめ</div>
+              <ul class="info-list">
+                <li>Filter coffee</li>
+                <li>Espresso</li>
+                <li>Cardamom bun等のpastry</li>
+              </ul>
+            </div>
+            <div class="info-group">
+              <div class="info-group-title">特徴</div>
+              <ul class="info-list">
+                <li>コーヒー＋pastry両方が強い</li>
+                <li>SoHo散策時の第一候補</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" data-shop="Coffee Project New York">
+          <div class="card-header">
+            <span class="rank-badge s">S</span>
+            <h3 class="shop-name"><a class="shop-link" href="https://www.google.com/maps/dir/?api=1&amp;destination=Coffee%20Project%20New%20York%2C%20East%20Village&amp;travelmode=walking" target="_blank" rel="noopener noreferrer">Coffee Project New York<svg class="icon shop-map-icon"><use href="#icon-pin"></use></svg></a></h3>
+          <div class="card-actions"><button class="fav-btn fav-want" type="button" data-fav="want" aria-label="行きたい">☆</button><button class="fav-btn fav-done" type="button" data-fav="done" aria-label="行った">✓</button></div></div>
+          <div class="card-meta">
+            <span class="meta-item"><svg class="icon"><use href="#icon-pin"></use></svg>East Village / Chelsea / Hell's Kitchen / FiDi / Tribeca</span>
+            <span class="meta-item"><svg class="icon"><use href="#icon-tag"></use></svg>NY specialty coffee</span>
+            <span class="meta-item"><svg class="icon"><use href="#icon-dollar"></use></svg>約$5～15</span>
+          </div>
+          <div class="card-body">
+            <div class="info-group">
+              <div class="info-group-title">おすすめ</div>
+              <ul class="info-list">
+                <li>Pour over</li>
+                <li>Espresso</li>
+                <li>Coffee flightがあれば検討</li>
+              </ul>
+            </div>
+            <div class="info-group">
+              <div class="info-group-title">特徴</div>
+              <ul class="info-list">
+                <li>NY発</li>
+                <li>店舗が多く今回最も使いやすい本格コーヒー店の一つ</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" data-shop="Devoción">
+          <div class="card-header">
+            <span class="rank-badge s">S</span>
+            <h3 class="shop-name"><a class="shop-link" href="https://www.google.com/maps/dir/?api=1&amp;destination=Devoci%C3%B3n%2C%20Flatiron%2C%20New%20York&amp;travelmode=walking" target="_blank" rel="noopener noreferrer">Devoción<svg class="icon shop-map-icon"><use href="#icon-pin"></use></svg></a></h3>
+          <div class="card-actions"><button class="fav-btn fav-want" type="button" data-fav="want" aria-label="行きたい">☆</button><button class="fav-btn fav-done" type="button" data-fav="done" aria-label="行った">✓</button></div></div>
+          <div class="card-meta">
+            <span class="meta-item"><svg class="icon"><use href="#icon-pin"></use></svg>Flatironほか</span>
+            <span class="meta-item"><svg class="icon"><use href="#icon-tag"></use></svg>Colombian specialty coffee</span>
+            <span class="meta-item"><svg class="icon"><use href="#icon-dollar"></use></svg>約$5～10</span>
+          </div>
+          <div class="card-body">
+            <div class="info-group">
+              <div class="info-group-title">おすすめ</div>
+              <ul class="info-list">
+                <li>Drip</li>
+                <li>Espresso</li>
+              </ul>
+            </div>
+            <div class="info-group">
+              <div class="info-group-title">特徴</div>
+              <ul class="info-list">
+                <li>豆の鮮度へのこだわりで知られる</li>
+                <li>コーヒー自体を楽しむ店</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" data-shop="Black Fox Coffee">
+          <div class="card-header">
+            <span class="rank-badge a">A</span>
+            <h3 class="shop-name"><a class="shop-link" href="https://www.google.com/maps/dir/?api=1&amp;destination=Black%20Fox%20Coffee%2C%20Financial%20District%2C%20New%20York&amp;travelmode=walking" target="_blank" rel="noopener noreferrer">Black Fox Coffee<svg class="icon shop-map-icon"><use href="#icon-pin"></use></svg></a></h3>
+          <div class="card-actions"><button class="fav-btn fav-want" type="button" data-fav="want" aria-label="行きたい">☆</button><button class="fav-btn fav-done" type="button" data-fav="done" aria-label="行った">✓</button></div></div>
+          <div class="card-meta">
+            <span class="meta-item"><svg class="icon"><use href="#icon-pin"></use></svg>Financial Districtほか</span>
+            <span class="meta-item"><svg class="icon"><use href="#icon-tag"></use></svg>Specialty coffee</span>
+            <span class="meta-item"><svg class="icon"><use href="#icon-dollar"></use></svg>約$5～15</span>
+          </div>
+          <div class="card-body">
+            <div class="info-group">
+              <div class="info-group-title">特徴</div>
+              <ul class="info-list">
+                <li>Lower Manhattan散策で使いやすい</li>
+                <li>自由の女神の日などの候補</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" data-shop="Stumptown Coffee Roasters">
+          <div class="card-header">
+            <span class="rank-badge a">A</span>
+            <h3 class="shop-name"><a class="shop-link" href="https://www.google.com/maps/dir/?api=1&amp;destination=Stumptown%20Coffee%20Roasters%2C%20Greenwich%20Village%2C%20New%20York&amp;travelmode=walking" target="_blank" rel="noopener noreferrer">Stumptown Coffee Roasters<svg class="icon shop-map-icon"><use href="#icon-pin"></use></svg></a></h3>
+          <div class="card-actions"><button class="fav-btn fav-want" type="button" data-fav="want" aria-label="行きたい">☆</button><button class="fav-btn fav-done" type="button" data-fav="done" aria-label="行った">✓</button></div></div>
+          <div class="card-meta">
+            <span class="meta-item"><svg class="icon"><use href="#icon-pin"></use></svg>Greenwich Village</span>
+            <span class="meta-item"><svg class="icon"><use href="#icon-tag"></use></svg>US specialty coffee</span>
+            <span class="meta-item"><svg class="icon"><use href="#icon-dollar"></use></svg>約$5～10</span>
+          </div>
+          <div class="card-body">
+            <div class="info-group">
+              <div class="info-group-title">特徴</div>
+              <ul class="info-list">
+                <li>Portland発なのでNYローカルではない</li>
+                <li>品質は安定</li>
+                <li>Village散策で使いやすい</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" data-shop="Joe Coffee Company">
+          <div class="card-header">
+            <span class="rank-badge a">A</span>
+            <h3 class="shop-name"><a class="shop-link" href="https://www.google.com/maps/dir/?api=1&amp;destination=Joe%20Coffee%20Company%2C%20Upper%20West%20Side%2C%20New%20York&amp;travelmode=walking" target="_blank" rel="noopener noreferrer">Joe Coffee Company<svg class="icon shop-map-icon"><use href="#icon-pin"></use></svg></a></h3>
+          <div class="card-actions"><button class="fav-btn fav-want" type="button" data-fav="want" aria-label="行きたい">☆</button><button class="fav-btn fav-done" type="button" data-fav="done" aria-label="行った">✓</button></div></div>
+          <div class="card-meta">
+            <span class="meta-item"><svg class="icon"><use href="#icon-pin"></use></svg>Upper West Sideなど複数</span>
+            <span class="meta-item"><svg class="icon"><use href="#icon-tag"></use></svg>NY local coffee chain</span>
+            <span class="meta-item"><svg class="icon"><use href="#icon-dollar"></use></svg>約$5～10</span>
+          </div>
+          <div class="card-body">
+            <div class="info-group">
+              <div class="info-group-title">特徴</div>
+              <ul class="info-list">
+                <li>NY発</li>
+                <li>Starbucksよりローカル感を優先したい場合に良い</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" data-shop="Birch Coffee">
+          <div class="card-header">
+            <span class="rank-badge a">A</span>
+            <h3 class="shop-name"><a class="shop-link" href="https://www.google.com/maps/dir/?api=1&amp;destination=Birch%20Coffee%2C%20Upper%20East%20Side%2C%20New%20York&amp;travelmode=walking" target="_blank" rel="noopener noreferrer">Birch Coffee<svg class="icon shop-map-icon"><use href="#icon-pin"></use></svg></a></h3>
+          <div class="card-actions"><button class="fav-btn fav-want" type="button" data-fav="want" aria-label="行きたい">☆</button><button class="fav-btn fav-done" type="button" data-fav="done" aria-label="行った">✓</button></div></div>
+          <div class="card-meta">
+            <span class="meta-item"><svg class="icon"><use href="#icon-pin"></use></svg>Upper East Sideなど</span>
+            <span class="meta-item"><svg class="icon"><use href="#icon-tag"></use></svg>NY local specialty</span>
+            <span class="meta-item"><svg class="icon"><use href="#icon-dollar"></use></svg>約$5～10</span>
+          </div>
+          <div class="card-body">
+            <div class="info-group">
+              <div class="info-group-title">特徴</div>
+              <ul class="info-list">
+                <li>Met / Guggenheim方面で使いやすい</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" data-shop="Variety Coffee Roasters">
+          <div class="card-header">
+            <span class="rank-badge a">A</span>
+            <h3 class="shop-name"><a class="shop-link" href="https://www.google.com/maps/dir/?api=1&amp;destination=Variety%20Coffee%20Roasters%2C%20Chelsea%2C%20New%20York&amp;travelmode=walking" target="_blank" rel="noopener noreferrer">Variety Coffee Roasters<svg class="icon shop-map-icon"><use href="#icon-pin"></use></svg></a></h3>
+          <div class="card-actions"><button class="fav-btn fav-want" type="button" data-fav="want" aria-label="行きたい">☆</button><button class="fav-btn fav-done" type="button" data-fav="done" aria-label="行った">✓</button></div></div>
+          <div class="card-meta">
+            <span class="meta-item"><svg class="icon"><use href="#icon-pin"></use></svg>Chelseaほか</span>
+            <span class="meta-item"><svg class="icon"><use href="#icon-tag"></use></svg>NY roaster</span>
+            <span class="meta-item"><svg class="icon"><use href="#icon-dollar"></use></svg>約$5～10</span>
+          </div>
+          <div class="card-body">
+            <div class="info-group">
+              <div class="info-group-title">特徴</div>
+              <ul class="info-list">
+                <li>NYの日常使いspecialty coffee</li>
+                <li>Chelsea散策に便利</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" data-shop="Everyman Espresso">
+          <div class="card-header">
+            <span class="rank-badge a">A</span>
+            <h3 class="shop-name"><a class="shop-link" href="https://www.google.com/maps/dir/?api=1&amp;destination=Everyman%20Espresso%2C%20East%20Village%2C%20New%20York&amp;travelmode=walking" target="_blank" rel="noopener noreferrer">Everyman Espresso<svg class="icon shop-map-icon"><use href="#icon-pin"></use></svg></a></h3>
+          <div class="card-actions"><button class="fav-btn fav-want" type="button" data-fav="want" aria-label="行きたい">☆</button><button class="fav-btn fav-done" type="button" data-fav="done" aria-label="行った">✓</button></div></div>
+          <div class="card-meta">
+            <span class="meta-item"><svg class="icon"><use href="#icon-pin"></use></svg>East Village</span>
+            <span class="meta-item"><svg class="icon"><use href="#icon-tag"></use></svg>Independent specialty</span>
+            <span class="meta-item"><svg class="icon"><use href="#icon-dollar"></use></svg>約$5～10</span>
+          </div>
+          <div class="card-body">
+            <div class="info-group">
+              <div class="info-group-title">特徴</div>
+              <ul class="info-list">
+                <li>小規模でコーヒー重視</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" data-shop="Abraço">
+          <div class="card-header">
+            <span class="rank-badge a">A</span>
+            <h3 class="shop-name"><a class="shop-link" href="https://www.google.com/maps/dir/?api=1&amp;destination=Abra%C3%A7o%2C%20East%20Village%2C%20New%20York&amp;travelmode=walking" target="_blank" rel="noopener noreferrer">Abraço<svg class="icon shop-map-icon"><use href="#icon-pin"></use></svg></a></h3>
+          <div class="card-actions"><button class="fav-btn fav-want" type="button" data-fav="want" aria-label="行きたい">☆</button><button class="fav-btn fav-done" type="button" data-fav="done" aria-label="行った">✓</button></div></div>
+          <div class="card-meta">
+            <span class="meta-item"><svg class="icon"><use href="#icon-pin"></use></svg>East Village</span>
+            <span class="meta-item"><svg class="icon"><use href="#icon-tag"></use></svg>小規模cafe</span>
+            <span class="meta-item"><svg class="icon"><use href="#icon-dollar"></use></svg>約$5～15</span>
+          </div>
+          <div class="card-body">
+            <div class="info-group">
+              <div class="info-group-title">おすすめ</div>
+              <ul class="info-list">
+                <li>Espresso</li>
+                <li>Olive oil cake</li>
+              </ul>
+            </div>
+            <div class="info-group">
+              <div class="info-group-title">特徴</div>
+              <ul class="info-list">
+                <li>East Villageらしい小さな人気店</li>
+                <li>長時間滞在よりcoffee break向き</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" data-shop="Porto Rico Importing Co.">
+          <div class="card-header">
+            <span class="rank-badge a">A</span>
+            <h3 class="shop-name"><a class="shop-link" href="https://www.google.com/maps/dir/?api=1&amp;destination=Porto%20Rico%20Importing%20Co.%2C%20Greenwich%20Village%2C%20New%20York&amp;travelmode=walking" target="_blank" rel="noopener noreferrer">Porto Rico Importing Co.<svg class="icon shop-map-icon"><use href="#icon-pin"></use></svg></a></h3>
+          <div class="card-actions"><button class="fav-btn fav-want" type="button" data-fav="want" aria-label="行きたい">☆</button><button class="fav-btn fav-done" type="button" data-fav="done" aria-label="行った">✓</button></div></div>
+          <div class="card-meta">
+            <span class="meta-item"><svg class="icon"><use href="#icon-pin"></use></svg>Greenwich Village</span>
+            <span class="meta-item"><svg class="icon"><use href="#icon-tag"></use></svg>Historic coffee merchant</span>
+            <span class="meta-item"><svg class="icon"><use href="#icon-dollar"></use></svg>約$3～10</span>
+          </div>
+          <div class="card-body">
+            <div class="info-group">
+              <div class="info-group-title">特徴</div>
+              <ul class="info-list">
+                <li>高級カフェというより昔ながらのcoffee shop</li>
+                <li>Villageの歴史や雰囲気込み</li>
+                <li>豆を見るのも面白い</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" data-shop="Partners Coffee">
+          <div class="card-header">
+            <span class="rank-badge a">A</span>
+            <h3 class="shop-name"><a class="shop-link" href="https://www.google.com/maps/dir/?api=1&amp;destination=Partners%20Coffee%2C%20West%20Village%2C%20New%20York&amp;travelmode=walking" target="_blank" rel="noopener noreferrer">Partners Coffee<svg class="icon shop-map-icon"><use href="#icon-pin"></use></svg></a></h3>
+          <div class="card-actions"><button class="fav-btn fav-want" type="button" data-fav="want" aria-label="行きたい">☆</button><button class="fav-btn fav-done" type="button" data-fav="done" aria-label="行った">✓</button></div></div>
+          <div class="card-meta">
+            <span class="meta-item"><svg class="icon"><use href="#icon-pin"></use></svg>West Village</span>
+            <span class="meta-item"><svg class="icon"><use href="#icon-tag"></use></svg>Brooklyn-origin specialty coffee</span>
+            <span class="meta-item"><svg class="icon"><use href="#icon-dollar"></use></svg>約$5～10</span>
+          </div>
+          <div class="card-body">
+            <div class="info-group">
+              <div class="info-group-title">特徴</div>
+              <ul class="info-list">
+                <li>West Village散策の休憩向き</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" data-shop="Cafe Grumpy">
+          <div class="card-header">
+            <span class="rank-badge a">A</span>
+            <h3 class="shop-name"><a class="shop-link" href="https://www.google.com/maps/dir/?api=1&amp;destination=Cafe%20Grumpy%2C%20Grand%20Central%2C%20New%20York&amp;travelmode=walking" target="_blank" rel="noopener noreferrer">Cafe Grumpy<svg class="icon shop-map-icon"><use href="#icon-pin"></use></svg></a></h3>
+          <div class="card-actions"><button class="fav-btn fav-want" type="button" data-fav="want" aria-label="行きたい">☆</button><button class="fav-btn fav-done" type="button" data-fav="done" aria-label="行った">✓</button></div></div>
+          <div class="card-meta">
+            <span class="meta-item"><svg class="icon"><use href="#icon-pin"></use></svg>Grand Centralほか</span>
+            <span class="meta-item"><svg class="icon"><use href="#icon-tag"></use></svg>NY local coffee</span>
+            <span class="meta-item"><svg class="icon"><use href="#icon-dollar"></use></svg>約$5～10</span>
+          </div>
+          <div class="card-body">
+            <div class="info-group">
+              <div class="info-group-title">特徴</div>
+              <ul class="info-list">
+                <li>Grand Central周辺で非常に使いやすい</li>
+                <li>移動途中に寄れる</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" data-shop="Little Collins">
+          <div class="card-header">
+            <span class="rank-badge a">A</span>
+            <h3 class="shop-name"><a class="shop-link" href="https://www.google.com/maps/dir/?api=1&amp;destination=Little%20Collins%2C%20Midtown%2C%20New%20York&amp;travelmode=walking" target="_blank" rel="noopener noreferrer">Little Collins<svg class="icon shop-map-icon"><use href="#icon-pin"></use></svg></a></h3>
+          <div class="card-actions"><button class="fav-btn fav-want" type="button" data-fav="want" aria-label="行きたい">☆</button><button class="fav-btn fav-done" type="button" data-fav="done" aria-label="行った">✓</button></div></div>
+          <div class="card-meta">
+            <span class="meta-item"><svg class="icon"><use href="#icon-pin"></use></svg>Midtown / Fifth Avenue</span>
+            <span class="meta-item"><svg class="icon"><use href="#icon-tag"></use></svg>Australian-style cafe</span>
+            <span class="meta-item"><svg class="icon"><use href="#icon-dollar"></use></svg>約$5～20</span>
+          </div>
+          <div class="card-body">
+            <div class="info-group">
+              <div class="info-group-title">特徴</div>
+              <ul class="info-list">
+                <li>コーヒーだけでなく軽食にも使える</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" data-shop="Culture Espresso">
+          <div class="card-header">
+            <span class="rank-badge a">A</span>
+            <h3 class="shop-name"><a class="shop-link" href="https://www.google.com/maps/dir/?api=1&amp;destination=Culture%20Espresso%2C%20Midtown%2C%20New%20York&amp;travelmode=walking" target="_blank" rel="noopener noreferrer">Culture Espresso<svg class="icon shop-map-icon"><use href="#icon-pin"></use></svg></a></h3>
+          <div class="card-actions"><button class="fav-btn fav-want" type="button" data-fav="want" aria-label="行きたい">☆</button><button class="fav-btn fav-done" type="button" data-fav="done" aria-label="行った">✓</button></div></div>
+          <div class="card-meta">
+            <span class="meta-item"><svg class="icon"><use href="#icon-pin"></use></svg>Midtown</span>
+            <span class="meta-item"><svg class="icon"><use href="#icon-tag"></use></svg>Specialty coffee</span>
+            <span class="meta-item"><svg class="icon"><use href="#icon-dollar"></use></svg>約$5～15</span>
+          </div>
+          <div class="card-body">
+            <div class="info-group">
+              <div class="info-group-title">おすすめ</div>
+              <ul class="info-list">
+                <li>Espresso</li>
+                <li>Cookie</li>
+              </ul>
+            </div>
+            <div class="info-group">
+              <div class="info-group-title">特徴</div>
+              <ul class="info-list">
+                <li>Bryant Park / Times Square付近から使いやすい</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" data-shop="Bird &amp; Branch">
+          <div class="card-header">
+            <span class="rank-badge a">A</span>
+            <h3 class="shop-name"><a class="shop-link" href="https://www.google.com/maps/dir/?api=1&amp;destination=Bird%20%26%20Branch%2C%20Hell's%20Kitchen%2C%20New%20York&amp;travelmode=walking" target="_blank" rel="noopener noreferrer">Bird & Branch<svg class="icon shop-map-icon"><use href="#icon-pin"></use></svg></a></h3>
+          <div class="card-actions"><button class="fav-btn fav-want" type="button" data-fav="want" aria-label="行きたい">☆</button><button class="fav-btn fav-done" type="button" data-fav="done" aria-label="行った">✓</button></div></div>
+          <div class="card-meta">
+            <span class="meta-item"><svg class="icon"><use href="#icon-pin"></use></svg>Hell's Kitchen</span>
+            <span class="meta-item"><svg class="icon"><use href="#icon-tag"></use></svg>Specialty coffee</span>
+            <span class="meta-item"><svg class="icon"><use href="#icon-dollar"></use></svg>約$5～15</span>
+          </div>
+          <div class="card-body">
+            <div class="info-group">
+              <div class="info-group-title">特徴</div>
+              <ul class="info-list">
+                <li>ホテル周辺・Theater Districtで候補にしやすい</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" data-shop="Frisson Espresso">
+          <div class="card-header">
+            <span class="rank-badge a">A</span>
+            <h3 class="shop-name"><a class="shop-link" href="https://www.google.com/maps/dir/?api=1&amp;destination=Frisson%20Espresso%2C%20Hell's%20Kitchen%2C%20New%20York&amp;travelmode=walking" target="_blank" rel="noopener noreferrer">Frisson Espresso<svg class="icon shop-map-icon"><use href="#icon-pin"></use></svg></a></h3>
+          <div class="card-actions"><button class="fav-btn fav-want" type="button" data-fav="want" aria-label="行きたい">☆</button><button class="fav-btn fav-done" type="button" data-fav="done" aria-label="行った">✓</button></div></div>
+          <div class="card-meta">
+            <span class="meta-item"><svg class="icon"><use href="#icon-pin"></use></svg>Hell's Kitchen</span>
+            <span class="meta-item"><svg class="icon"><use href="#icon-tag"></use></svg>Specialty coffee</span>
+            <span class="meta-item"><svg class="icon"><use href="#icon-dollar"></use></svg>約$5～10</span>
+          </div>
+          <div class="card-body">
+            <div class="info-group">
+              <div class="info-group-title">特徴</div>
+              <ul class="info-list">
+                <li>比較的入りやすい</li>
+                <li>Theater Districtのコーヒー候補</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" data-shop="Caffe Reggio">
+          <div class="card-header">
+            <span class="rank-badge a">A</span>
+            <h3 class="shop-name"><a class="shop-link" href="https://www.google.com/maps/dir/?api=1&amp;destination=Caffe%20Reggio%2C%20Greenwich%20Village%2C%20New%20York&amp;travelmode=walking" target="_blank" rel="noopener noreferrer">Caffe Reggio<svg class="icon shop-map-icon"><use href="#icon-pin"></use></svg></a></h3>
+          <div class="card-actions"><button class="fav-btn fav-want" type="button" data-fav="want" aria-label="行きたい">☆</button><button class="fav-btn fav-done" type="button" data-fav="done" aria-label="行った">✓</button></div></div>
+          <div class="card-meta">
+            <span class="meta-item"><svg class="icon"><use href="#icon-pin"></use></svg>Greenwich Village</span>
+            <span class="meta-item"><svg class="icon"><use href="#icon-tag"></use></svg>Historic cafe</span>
+            <span class="meta-item"><svg class="icon"><use href="#icon-dollar"></use></svg>約$10～20</span>
+          </div>
+          <div class="card-body">
+            <div class="info-group">
+              <div class="info-group-title">特徴</div>
+              <ul class="info-list">
+                <li>コーヒーの最先端性より歴史・雰囲気</li>
+                <li>1920年代から続くVillageのカフェ文化を楽しむ店</li>
+                <li>Village Vanguardの日と相性が良い</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 17. マクドナルド -->
+    <div id="sec-17" class="section-block">
+      <h2 class="section-title">17. マクドナルド</h2>
+      <div class="cards-grid">
+        <div class="card" data-shop="McDonald's">
+          <div class="card-header">
+            <span class="rank-badge a" style="width:auto; padding:0 8px; font-size:0.95rem;">A: 経験枠</span>
+            <h3 class="shop-name">McDonald's</h3>
+          <div class="card-actions"><button class="fav-btn fav-want" type="button" data-fav="want" aria-label="行きたい">☆</button><button class="fav-btn fav-done" type="button" data-fav="done" aria-label="行った">✓</button></div></div>
+          <div class="card-body">
+            <div class="info-group">
+              <div class="info-group-title">食べるもの</div>
+              <ul class="info-list">
+                <li>日本との違いが分かるburger / fries / breakfast</li>
+              </ul>
+            </div>
+            <div class="info-group">
+              <div class="info-group-title">位置づけ</div>
+              <ul class="info-list">
+                <li>NYの貴重な昼食・夕食枠を使う優先度は低い</li>
+                <li>移動日や朝食、時間調整で利用</li>
+                <li>「アメリカのMcDonald'sを1回経験する」という目的で十分</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 18. 私なら今回優先するTOP20 -->
+    <div id="sec-18" class="section-block">
+      <h2 class="section-title">18. 私なら今回優先するTOP20</h2>
+      <ol class="top20-grid">
+        <li class="top-item">
+          <div class="top-number">1</div>
+          <div class="top-content">
+            <div class="top-name">Russ & Daughters</div>
+            <div class="top-target"><svg class="icon"><use href="#icon-arrow-right"></use></svg>Bagel + lox + cream cheese</div>
+          </div>
+        </li>
+        <li class="top-item">
+          <div class="top-number">2</div>
+          <div class="top-content">
+            <div class="top-name">Joe's Pizza</div>
+            <div class="top-target"><svg class="icon"><use href="#icon-arrow-right"></use></svg>Classic NY slice</div>
+          </div>
+        </li>
+        <li class="top-item">
+          <div class="top-number">3</div>
+          <div class="top-content">
+            <div class="top-name">L'Industrie Pizzeria</div>
+            <div class="top-target"><svg class="icon"><use href="#icon-arrow-right"></use></svg>列が短ければ現在形のNY pizza</div>
+          </div>
+        </li>
+        <li class="top-item">
+          <div class="top-number">4</div>
+          <div class="top-content">
+            <div class="top-name">Katz's Delicatessen</div>
+            <div class="top-target"><svg class="icon"><use href="#icon-arrow-right"></use></svg>Pastrami on rye</div>
+            <div class="top-note">※極端な行列なら2nd Ave Deliへ</div>
+          </div>
+        </li>
+        <li class="top-item">
+          <div class="top-number">5</div>
+          <div class="top-content">
+            <div class="top-name">S&P Lunch</div>
+            <div class="top-target"><svg class="icon"><use href="#icon-arrow-right"></use></svg>Tuna melt / pastrami / egg cream</div>
+          </div>
+        </li>
+        <li class="top-item">
+          <div class="top-number">6</div>
+          <div class="top-content">
+            <div class="top-name">普通のBodega</div>
+            <div class="top-target"><svg class="icon"><use href="#icon-arrow-right"></use></svg>Bacon, Egg and Cheese</div>
+          </div>
+        </li>
+        <li class="top-item">
+          <div class="top-number">7</div>
+          <div class="top-content">
+            <div class="top-name">Hamburger America</div>
+            <div class="top-target"><svg class="icon"><use href="#icon-arrow-right"></use></svg>American burger</div>
+          </div>
+        </li>
+        <li class="top-item">
+          <div class="top-number">8</div>
+          <div class="top-content">
+            <div class="top-name">LOS TACOS No.1</div>
+            <div class="top-target"><svg class="icon"><use href="#icon-arrow-right"></use></svg>Adobada taco</div>
+          </div>
+        </li>
+        <li class="top-item">
+          <div class="top-number">9</div>
+          <div class="top-content">
+            <div class="top-name">Xi'an Famous Foods</div>
+            <div class="top-target"><svg class="icon"><use href="#icon-arrow-right"></use></svg>Spicy cumin lamb noodles</div>
+          </div>
+        </li>
+        <li class="top-item">
+          <div class="top-number">10</div>
+          <div class="top-content">
+            <div class="top-name">Woorijip</div>
+            <div class="top-target"><svg class="icon"><use href="#icon-arrow-right"></use></svg>韓国系NYの日常食</div>
+          </div>
+        </li>
+        <li class="top-item">
+          <div class="top-number">11</div>
+          <div class="top-content">
+            <div class="top-name">Punjabi Deli</div>
+            <div class="top-target"><svg class="icon"><use href="#icon-arrow-right"></use></svg>NYの移民都市らしさ</div>
+          </div>
+        </li>
+        <li class="top-item">
+          <div class="top-number">12</div>
+          <div class="top-content">
+            <div class="top-name">Margon</div>
+            <div class="top-target"><svg class="icon"><use href="#icon-arrow-right"></use></svg>Cuban sandwich / roast pork</div>
+          </div>
+        </li>
+        <li class="top-item">
+          <div class="top-number">13</div>
+          <div class="top-content">
+            <div class="top-name">Veselka</div>
+            <div class="top-target"><svg class="icon"><use href="#icon-arrow-right"></use></svg>Pierogi</div>
+          </div>
+        </li>
+        <li class="top-item">
+          <div class="top-number">14</div>
+          <div class="top-content">
+            <div class="top-name">Yonah Schimmel's</div>
+            <div class="top-target"><svg class="icon"><use href="#icon-arrow-right"></use></svg>Knish</div>
+          </div>
+        </li>
+        <li class="top-item">
+          <div class="top-number">15</div>
+          <div class="top-content">
+            <div class="top-name">Levain Bakery</div>
+            <div class="top-target"><svg class="icon"><use href="#icon-arrow-right"></use></svg>Chocolate Chip Walnut Cookie</div>
+          </div>
+        </li>
+        <li class="top-item">
+          <div class="top-number">16</div>
+          <div class="top-content">
+            <div class="top-name">Magnolia Bakery</div>
+            <div class="top-target"><svg class="icon"><use href="#icon-arrow-right"></use></svg>Banana Pudding</div>
+          </div>
+        </li>
+        <li class="top-item">
+          <div class="top-number">17</div>
+          <div class="top-content">
+            <div class="top-name">La Cabra</div>
+            <div class="top-target"><svg class="icon"><use href="#icon-arrow-right"></use></svg>Coffee + pastry</div>
+          </div>
+        </li>
+        <li class="top-item">
+          <div class="top-number">18</div>
+          <div class="top-content">
+            <div class="top-name">Coffee Project New York</div>
+            <div class="top-target"><svg class="icon"><use href="#icon-arrow-right"></use></svg>Pour over / espresso</div>
+          </div>
+        </li>
+        <li class="top-item">
+          <div class="top-number">19</div>
+          <div class="top-content">
+            <div class="top-name">Other Half Brewing</div>
+            <div class="top-target"><svg class="icon"><use href="#icon-arrow-right"></use></svg>NY craft beer</div>
+          </div>
+        </li>
+        <li class="top-item">
+          <div class="top-number">20</div>
+          <div class="top-content">
+            <div class="top-name">Blind Tiger Ale House</div>
+            <div class="top-target"><svg class="icon"><use href="#icon-arrow-right"></use></svg>West Villageでcraft beer</div>
+          </div>
+        </li>
+      </ol>
+    </div>
+
+    <!-- 19. 行列を見たときの代替ルール -->
+    <div id="sec-19" class="section-block">
+      <h2 class="section-title">19. 行列を見たときの代替ルール</h2>
+      <div class="alt-rules-container">
+        <div class="alt-rule">
+          <div class="alt-condition">Russ & Daughtersが混雑</div>
+          <div class="alt-arrow"><svg class="icon"><use href="#icon-arrow-right"></use></svg></div>
+          <div class="alt-targets">Ess-a-Bagel / Murray's / Tal Bagels</div>
+        </div>
+        <div class="alt-rule">
+          <div class="alt-condition">L'Industrieが大行列</div>
+          <div class="alt-arrow"><svg class="icon"><use href="#icon-arrow-right"></use></svg></div>
+          <div class="alt-targets">Joe's Pizza / Lucia Pizza of SoHo / Scarr's</div>
+        </div>
+        <div class="alt-rule">
+          <div class="alt-condition">Katz'sが大行列</div>
+          <div class="alt-arrow"><svg class="icon"><use href="#icon-arrow-right"></use></svg></div>
+          <div class="alt-targets">2nd Ave Deli / Sarge's / S&P Lunch</div>
+        </div>
+        <div class="alt-rule">
+          <div class="alt-condition">Chelsea Marketが混雑しすぎ</div>
+          <div class="alt-arrow"><svg class="icon"><use href="#icon-arrow-right"></use></svg></div>
+          <div class="alt-targets">Market 57</div>
+        </div>
+        <div class="alt-rule">
+          <div class="alt-condition">人気カフェが満席</div>
+          <div class="alt-arrow"><svg class="icon"><use href="#icon-arrow-right"></use></svg></div>
+          <div class="alt-targets">近くのCoffee Project / Joe Coffee / Birch / Variety / Black Foxへ</div>
+        </div>
+        <div class="alt-message">
+          「その店でなければ意味がない」と考えない。<br>
+          NYは代替店の質が非常に高いので、15～20分以上並ぶなら次の候補へ移る方針を基本とする。
+        </div>
+      </div>
+    </div>
+
+    <!-- 20. 今回あえて優先しないもの -->
+    <div id="sec-20" class="section-block">
+      <h2 class="section-title">20. 今回あえて優先しないもの</h2>
+      <div class="not-priority-grid">
+        <div class="not-card">
+          <div class="not-target"><svg class="icon"><use href="#icon-x"></use></svg>高級steakhouse</div>
+          <div class="not-reason">今回の夕食予算を超えやすい</div>
+        </div>
+        <div class="not-card">
+          <div class="not-target"><svg class="icon"><use href="#icon-x"></use></svg>予約争奪型restaurant</div>
+          <div class="not-reason">食への関心度と旅行時間を考えると費用対効果が低い</div>
+        </div>
+        <div class="not-card">
+          <div class="not-target"><svg class="icon"><use href="#icon-x"></use></svg>何時間も並ぶviral店</div>
+          <div class="not-reason">同程度に良い代替がNYには多数ある</div>
+        </div>
+        <div class="not-card">
+          <div class="not-target"><svg class="icon"><use href="#icon-x"></use></svg>Starbucks</div>
+          <div class="not-reason">日本でも経験できるため優先度低</div>
+        </div>
+        <div class="not-card">
+          <div class="not-target"><svg class="icon"><use href="#icon-x"></use></svg>Blue Bottle Coffee</div>
+          <div class="not-reason">高品質だが今回あえてNYで優先する理由は弱い</div>
+        </div>
+        <div class="not-card">
+          <div class="not-target"><svg class="icon"><use href="#icon-x"></use></svg>「SNSで流行っているから」<br>という理由だけの店</div>
+          <div class="not-reason">NY文化・味・場所との相性を優先する</div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<!-- 近くの店クイックアクセス -->
+<button id="nearFabBtn" class="near-fab" type="button">近くの店</button>
+
+<div id="nearOverlay" class="toc-overlay">
+  <div class="toc-overlay-panel">
+    <div class="toc-overlay-header">
+      <span>近くの店 TOP12</span>
+      <button id="nearCloseBtn" class="toc-overlay-close" type="button" aria-label="閉じる">×</button>
+    </div>
+    <div id="nearList" class="near-list"></div>
+  </div>
+</div>
+
+<!-- 目次クイックアクセス -->
+<button id="tocFabBtn" class="toc-fab" type="button">目次</button>
+
+<div id="tocOverlay" class="toc-overlay">
+  <div class="toc-overlay-panel">
+    <div class="toc-overlay-header">
+      <span>目次</span>
+      <button id="tocCloseBtn" class="toc-overlay-close" type="button" aria-label="閉じる">×</button>
+    </div>
+    <ul class="toc-list" id="tocOverlayList"></ul>
+  </div>
+</div>
+
+<script>
+  // スクロールに応じた目次のハイライト更新（理解補助のための最小限のJS）
+  document.addEventListener("DOMContentLoaded", () => {
+    const observerOptions = {
+      root: null,
+      rootMargin: "-10% 0px -80% 0px",
+      threshold: 0
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          document.querySelectorAll('.toc-link').forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === '#' + entry.target.id) {
+              link.classList.add('active');
+            }
+          });
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.section-block').forEach(section => {
+      observer.observe(section);
+    });
+
+    // 目次クイックアクセス（オーバーレイ）
+    const tocOverlay = document.getElementById('tocOverlay');
+    const tocFabBtn = document.getElementById('tocFabBtn');
+    const tocCloseBtn = document.getElementById('tocCloseBtn');
+    const tocOverlayList = document.getElementById('tocOverlayList');
+    const sourceList = document.querySelector('.sidebar .toc-list');
+
+    if (tocOverlay && tocFabBtn && tocCloseBtn && tocOverlayList && sourceList) {
+      tocOverlayList.innerHTML = sourceList.innerHTML;
+
+      const openToc = () => tocOverlay.classList.add('is-open');
+      const closeToc = () => tocOverlay.classList.remove('is-open');
+
+      tocFabBtn.addEventListener('click', openToc);
+      tocCloseBtn.addEventListener('click', closeToc);
+      tocOverlay.addEventListener('click', (e) => {
+        if (e.target === tocOverlay) closeToc();
+      });
+      tocOverlayList.querySelectorAll('.toc-link').forEach(link => {
+        link.addEventListener('click', closeToc);
+      });
+    }
+
+    // お気に入り（行きたい／行った）
+    const FAV_KEY = 'nyFoodFavorites_20260824';
+    let favData = {};
+    try {
+      favData = JSON.parse(localStorage.getItem(FAV_KEY) || '{}');
+    } catch (e) {
+      favData = {};
+    }
+
+    function saveFav() {
+      try {
+        localStorage.setItem(FAV_KEY, JSON.stringify(favData));
+      } catch (e) {}
+    }
+
+    document.querySelectorAll('.card[data-shop]').forEach(card => {
+      const name = card.getAttribute('data-shop');
+      const state = favData[name] || {};
+      const wantBtn = card.querySelector('.fav-want');
+      const doneBtn = card.querySelector('.fav-done');
+      if (wantBtn && state.want) wantBtn.classList.add('is-active');
+      if (doneBtn && state.done) doneBtn.classList.add('is-active');
+
+      if (wantBtn) {
+        wantBtn.addEventListener('click', () => {
+          const cur = favData[name] || {};
+          cur.want = !cur.want;
+          favData[name] = cur;
+          wantBtn.classList.toggle('is-active', cur.want);
+          saveFav();
+          applyFilters();
+        });
+      }
+      if (doneBtn) {
+        doneBtn.addEventListener('click', () => {
+          const cur = favData[name] || {};
+          cur.done = !cur.done;
+          favData[name] = cur;
+          doneBtn.classList.toggle('is-active', cur.done);
+          saveFav();
+        });
+      }
+    });
+
+    // 検索・絞り込み
+    const filterSearch = document.getElementById('filterSearch');
+    const areaSelect = document.getElementById('areaSelect');
+    const rankChips = document.querySelectorAll('#rankChips .filter-chip');
+    const favOnlyChip = document.getElementById('favOnlyChip');
+    const filterCount = document.getElementById('filterCount');
+    let activeRank = 'all';
+    let favOnly = false;
+
+    function getPrimaryArea(text) {
+      if (!text) return '';
+      let a = text.split('/')[0].trim();
+      const suffixes = ['など複数', 'ほか多数', 'など', 'ほか', '複数', '周辺', '中心', '各所'];
+      for (const suf of suffixes) {
+        if (a.endsWith(suf)) { a = a.slice(0, -suf.length).trim(); break; }
+      }
+      return a;
+    }
+
+    function getCardArea(card) {
+      const pin = card.querySelector('.card-meta .meta-item');
+      return pin ? getPrimaryArea(pin.textContent.trim()) : '';
+    }
+
+    function applyFilters() {
+      if (!filterSearch) return;
+      const term = (filterSearch.value || '').trim().toLowerCase();
+      let visibleCount = 0;
+      document.querySelectorAll('.cards-grid').forEach(grid => {
+        let anyVisible = false;
+        grid.querySelectorAll('.card').forEach(card => {
+          let show = true;
+          if (activeRank !== 'all') {
+            show = !!card.querySelector('.rank-badge.' + activeRank);
+          }
+          if (show && favOnly) {
+            const name = card.getAttribute('data-shop');
+            show = !!(favData[name] && favData[name].want);
+          }
+          if (show && areaSelect && areaSelect.value) {
+            show = getCardArea(card) === areaSelect.value;
+          }
+          if (show && term) {
+            show = card.textContent.toLowerCase().includes(term);
+          }
+          card.classList.toggle('is-hidden', !show);
+          if (show) { anyVisible = true; visibleCount++; }
+        });
+        const section = grid.closest('.section-block');
+        if (section) {
+          section.classList.toggle('is-empty', !anyVisible);
+        }
+      });
+      if (filterCount) filterCount.textContent = visibleCount + '件表示';
+    }
+
+    if (filterSearch) {
+      filterSearch.addEventListener('input', applyFilters);
+      if (areaSelect) {
+        areaSelect.addEventListener('change', applyFilters);
+      }
+      rankChips.forEach(chip => {
+        chip.addEventListener('click', () => {
+          rankChips.forEach(c => c.classList.remove('is-active'));
+          chip.classList.add('is-active');
+          activeRank = chip.getAttribute('data-rank');
+          applyFilters();
+        });
+      });
+      if (favOnlyChip) {
+        favOnlyChip.addEventListener('click', () => {
+          favOnly = !favOnly;
+          favOnlyChip.classList.toggle('is-active', favOnly);
+          applyFilters();
+        });
+      }
+      applyFilters();
+    }
+
+    // 現在地からの距離・近くの店
+    const SHOP_COORDS = {
+      "Russ & Daughters": [40.7196388, -73.9895629],
+      "Ess-a-Bagel": [40.7486317, -73.9893492],
+      "Murray's Bagels": [40.7363315, -73.9971668],
+      "Best Bagel & Coffee": [40.7522171, -73.9911323],
+      "Tal Bagels": [40.7777126, -73.9570936],
+      "Joe's Pizza": [40.7305467, -74.0020629],
+      "L'Industrie Pizzeria": [40.7115764, -73.9578034],
+      "Lucia Pizza of SoHo": [40.7213965, -74.0043967],
+      "Scarr's Pizza": [40.7157403, -73.9915692],
+      "Katz's Delicatessen": [40.7223431, -73.987353],
+      "2nd Ave Deli": [40.7451818, -73.9791899],
+      "Hamburger America": [40.7279642, -74.0024583],
+      "7th Street Burger": [40.7269257, -73.9853696],
+      "Shake Shack": [40.7415111, -73.9881732],
+      "Gray's Papaya": [40.7783771, -73.9815748],
+      "Faicco's Italian Specialties": [40.7311218, -74.0030826],
+      "Alidoro": [40.7516396, -73.9956086],
+      "Pisillo Italian Panini": [40.7105063, -74.0075665],
+      "LOS TACOS No.1": [40.7065614, -74.0117171],
+      "Los Mariscos": [40.742149, -74.0056195],
+      "Xi'an Famous Foods": [40.7401797, -74.0019721],
+      "Great NY Noodletown": [40.7149725, -73.9970927],
+      "Shu Jiao Fu Zhou": [40.7174828, -73.992049],
+      "Woorijip": [40.7474399, -73.9864528],
+      "Food Gallery 32": [40.7477054, -73.9862346],
+      "Punjabi Deli": [40.7226466, -73.986706],
+      "Mamoun's Falafel": [40.7302366, -74.0004281],
+      "Veselka": [40.7289775, -73.9869985],
+      "Margon": [40.7579702, -73.9838946],
+      "Levain Bakery": [40.7798995, -73.9803421],
+      "Magnolia Bakery": [40.7358879, -74.005],
+      "Eileen's Special Cheesecake": [40.721551, -73.997246],
+      "Chinatown Ice Cream Factory": [40.7154164, -73.9981579],
+      "Il Laboratorio del Gelato": [40.7222645, -73.9870761],
+      "Breads Bakery": [40.7714244, -73.9596363],
+      "Orwashers Bakery": [40.7722806, -73.9549444],
+      "Chelsea Market": [40.7420513, -74.0048973],
+      "Essex Market": [40.7179242, -73.9880515],
+      "The Hugh": [40.7583874, -73.9702549],
+      "McSorley's Old Ale House": [40.7287612, -73.9897021],
+      "La Cabra": [40.7242387, -73.9961964],
+      "Coffee Project New York": [40.7270679, -73.9893826],
+      "Devoción": [40.7435347, -73.9888798],
+      "Black Fox Coffee": [40.7064444, -74.0079647],
+      "Stumptown Coffee Roasters": [40.7456554, -73.9880474],
+      "Joe Coffee Company": [40.7857253, -73.9729983],
+      "Birch Coffee": [40.7436151, -73.9863949],
+      "Variety Coffee Roasters": [40.745206, -73.9946116],
+      "Everyman Espresso": [40.7327461, -73.9883025],
+      "Abraço": [40.7273019, -73.9861875],
+      "Porto Rico Importing Co.": [40.7295309, -74.0015887],
+      "Partners Coffee": [40.7349281, -74.0022788],
+      "Cafe Grumpy": [40.7151271, -73.9901425],
+      "Little Collins": [40.7523935, -73.9735028],
+      "Culture Espresso": [40.7551309, -73.9923795],
+      "Bird & Branch": [40.7602787, -73.9907472],
+      "Frisson Espresso": [40.7608908, -73.9889333],
+      "Caffe Reggio": [40.730322, -74.0003624],
+      "Junior's Restaurant & Bakery": [40.7582151, -73.9866267],
+      "Market 57": [40.7431453, -74.0089412],
+      "Vito's Slices and Ices": [40.765, -73.9885],
+      "Sarge's Delicatessen & Diner": [40.7477, -73.9781],
+      "S&P Lunch": [40.7469, -73.9932],
+      "Yonah Schimmel's Knish Bakery": [40.7233, -73.9908],
+      "Blind Tiger Ale House": [40.7314, -74.0026],
+      "Other Half Brewing - Rockefeller Center Taproom": [40.7587, -73.9799]
+    };
+
+    function distMeters(lat1, lon1, lat2, lon2) {
+      const R = 6371000;
+      const toRad = d => d * Math.PI / 180;
+      const dLat = toRad(lat2 - lat1);
+      const dLon = toRad(lon2 - lon1);
+      const a = Math.sin(dLat / 2) ** 2 + Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) * Math.sin(dLon / 2) ** 2;
+      return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    }
+
+    function formatDist(m) {
+      if (m < 1000) return Math.round(m) + 'm';
+      return (m / 1000).toFixed(1) + 'km';
+    }
+
+    function escapeHtml(s) {
+      return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    }
+
+    const cardByShop = new Map();
+    document.querySelectorAll('.card[data-shop]').forEach(card => {
+      cardByShop.set(card.getAttribute('data-shop'), card);
+    });
+
+    let userPos = null;
+    function getUserPosition() {
+      return new Promise((resolve, reject) => {
+        if (userPos) { resolve(userPos); return; }
+        if (!navigator.geolocation) { reject(new Error('unsupported')); return; }
+        navigator.geolocation.getCurrentPosition(
+          pos => { userPos = { lat: pos.coords.latitude, lon: pos.coords.longitude }; resolve(userPos); },
+          err => reject(err),
+          { enableHighAccuracy: true, timeout: 10000, maximumAge: 300000 }
+        );
+      });
+    }
+
+    // 近い順ソート（フィルターバーのチップ）
+    const nearSortChip = document.getElementById('nearSortChip');
+    let nearSortActive = false;
+    const originalOrder = new Map();
+    document.querySelectorAll('.cards-grid').forEach(grid => {
+      originalOrder.set(grid, Array.from(grid.children));
+    });
+
+    function clearDistanceBadges() {
+      document.querySelectorAll('.dist-badge').forEach(el => el.remove());
+    }
+
+    function restoreOriginalOrder() {
+      originalOrder.forEach((cards, grid) => {
+        cards.forEach(c => grid.appendChild(c));
+      });
+    }
+
+    function applyNearSort() {
+      document.querySelectorAll('.cards-grid').forEach(grid => {
+        const cards = Array.from(grid.querySelectorAll('.card'));
+        const withDist = cards.map(card => {
+          const name = card.getAttribute('data-shop');
+          const coord = SHOP_COORDS[name];
+          const d = (coord && userPos) ? distMeters(userPos.lat, userPos.lon, coord[0], coord[1]) : Infinity;
+          return { card, d };
+        });
+        withDist.sort((a, b) => a.d - b.d);
+        withDist.forEach(({ card, d }) => {
+          grid.appendChild(card);
+          if (d !== Infinity) {
+            let badge = card.querySelector('.dist-badge');
+            if (!badge) {
+              badge = document.createElement('span');
+              badge.className = 'meta-item dist-badge';
+              const meta = card.querySelector('.card-meta');
+              if (meta) meta.insertBefore(badge, meta.firstChild);
+            }
+            badge.textContent = '📍' + formatDist(d);
+          }
+        });
+      });
+    }
+
+    if (nearSortChip) {
+      nearSortChip.addEventListener('click', () => {
+        if (nearSortActive) {
+          nearSortActive = false;
+          nearSortChip.classList.remove('is-active');
+          clearDistanceBadges();
+          restoreOriginalOrder();
+          return;
+        }
+        const originalLabel = nearSortChip.textContent;
+        nearSortChip.textContent = '取得中…';
+        getUserPosition().then(() => {
+          nearSortActive = true;
+          nearSortChip.classList.add('is-active');
+          nearSortChip.textContent = originalLabel;
+          applyNearSort();
+        }).catch(() => {
+          nearSortChip.textContent = originalLabel;
+          alert('現在地を取得できませんでした。ブラウザの位置情報の許可設定をご確認ください。');
+        });
+      });
+    }
+
+    // 近くの店 クイックパネル
+    const nearFabBtn = document.getElementById('nearFabBtn');
+    const nearOverlay = document.getElementById('nearOverlay');
+    const nearCloseBtn = document.getElementById('nearCloseBtn');
+    const nearList = document.getElementById('nearList');
+
+    function renderNearList() {
+      const items = Object.keys(SHOP_COORDS).map(name => {
+        const coord = SHOP_COORDS[name];
+        const d = distMeters(userPos.lat, userPos.lon, coord[0], coord[1]);
+        const card = cardByShop.get(name);
+        const rankEl = card ? card.querySelector('.rank-badge') : null;
+        const rank = rankEl ? rankEl.textContent.trim() : '';
+        const rankClass = rankEl ? ['s', 'a', 'b'].find(c => rankEl.classList.contains(c)) || '' : '';
+        const link = card ? card.querySelector('.shop-link') : null;
+        const href = link ? link.getAttribute('href') : '#';
+        return { name, d, rank, rankClass, href };
+      }).sort((a, b) => a.d - b.d).slice(0, 12);
+
+      if (!nearList) return;
+      if (items.length === 0) {
+        nearList.innerHTML = '<div class="near-empty">表示できる店舗がありません。</div>';
+        return;
+      }
+      nearList.innerHTML = items.map(it =>
+        `<a class="near-item" href="${it.href}" target="_blank" rel="noopener noreferrer">` +
+        `<span class="near-rank rank-badge ${it.rankClass}">${it.rank}</span>` +
+        `<span class="near-name">${escapeHtml(it.name)}</span>` +
+        `<span class="near-dist">${formatDist(it.d)}</span>` +
+        `</a>`
+      ).join('');
+    }
+
+    if (nearFabBtn && nearOverlay && nearCloseBtn && nearList) {
+      const openNear = () => nearOverlay.classList.add('is-open');
+      const closeNear = () => nearOverlay.classList.remove('is-open');
+      nearCloseBtn.addEventListener('click', closeNear);
+      nearOverlay.addEventListener('click', e => { if (e.target === nearOverlay) closeNear(); });
+
+      nearFabBtn.addEventListener('click', () => {
+        const originalLabel = nearFabBtn.textContent;
+        nearFabBtn.textContent = '取得中…';
+        getUserPosition().then(() => {
+          nearFabBtn.textContent = originalLabel;
+          renderNearList();
+          openNear();
+        }).catch(() => {
+          nearFabBtn.textContent = originalLabel;
+          alert('現在地を取得できませんでした。ブラウザの位置情報の許可設定をご確認ください。');
+        });
+      });
+    }
+  });
+</script>
+</body>
+</html>
